@@ -79,7 +79,7 @@ public class Bfast1Fragment extends AppCompatActivity {
     private static final int MODEL_PIXEL_SIZE = 3;    // RGB
     private static final int BYTES_PER_CHANNEL = 4;   // float32
     // Number of classes in your model
-    private static final int MODEL_OUTPUT_CLASSES = 55;
+    private static final int MODEL_OUTPUT_CLASSES = 56;
 
     private ActivityResultLauncher<Intent> cameraLauncher;
     private ActivityResultLauncher<String> galleryLauncher;
@@ -275,6 +275,14 @@ public class Bfast1Fragment extends AppCompatActivity {
             case "rice":
                 resultText = "Rice detected!\nCarbon Emission: 0.5 kg CO₂-e per serving";
                 pointsAwarded = 10;
+                break;
+            case "donut":
+                resultText = "Donut detected!\nCarbon Emission: 0.85 kg CO₂-e per serving";
+                pointsAwarded = 5;
+                break;
+            case "cake":
+                resultText = "Cake detected!\nCarbon Emission: 2.13 kg CO₂-e per serving";
+                pointsAwarded = 3;
                 break;
             case "plate":
                 resultText = "Plate detected!\n(No carbon emission data available)";
