@@ -30,7 +30,7 @@
                 android:id="@+id/popUpText1"
                 android:layout_width="150sp"
                 android:layout_height="85sp"
-                android:layout_marginTop="-770dp"
+                android:layout_marginTop="-765dp"
                 android:layout_marginStart="-30sp"
             android:text="@string/diduknow"
             android:textSize="16sp"
@@ -50,7 +50,7 @@
             android:textAlignment="center"
             android:fontFamily="@font/poppinsregular"
             android:textColor="@color/YGreen"
-            android:layout_marginTop="-132dp"
+            android:layout_marginTop="-112dp"
             android:gravity="center"/>
 
         <!-- Button for next, placed below popUpText13 -->
@@ -67,7 +67,7 @@
                 android:layout_height="50sp"
                 android:layout_marginTop="0dp"
                 android:layout_marginEnd="50sp"
-                android:background="@drawable/redbtn"
+                style="@style/popupbtn"
                 android:fontFamily="@font/poppinsmedium"
                 android:text="@string/back" />
 
@@ -76,7 +76,7 @@
                 android:layout_width="120sp"
                 android:layout_height="50sp"
                 android:layout_marginTop="0dp"
-                android:background="@drawable/redbtn"
+                style="@style/popupbtn"
                 android:fontFamily="@font/poppinsmedium"
                 android:text="@string/next" />
         </LinearLayout>

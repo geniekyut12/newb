@@ -6,14 +6,12 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.QueryDocumentSnapshot;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -21,7 +19,7 @@ import java.util.Map;
 public class PostAssess1After extends AppCompatActivity {
 
     private Button btnq1done;
-    private TextView scoreTextView;
+    private TextView scoreTextView, resultTextView, wtgm1TextView; // Added wtgm1TextView for motivational message
     private FirebaseFirestore db;
     private FirebaseAuth auth;
 
@@ -40,28 +38,38 @@ public class PostAssess1After extends AppCompatActivity {
 
         btnq1done = findViewById(R.id.post1done);
         scoreTextView = findViewById(R.id.post1score);
+        resultTextView = findViewById(R.id.wtg);       // This TextView displays the result message ("Well Done!" or "Failed")
+        wtgm1TextView = findViewById(R.id.wtgm1);        // This TextView will display the motivational message if needed
 
         int score = getIntent().getIntExtra("score", 0);
         scoreTextView.setText(String.valueOf(score));
 
-        saveScoreToFirestore(score);
+        // Determine the result message based on the score
+        String resultMessage = (score >= 4) ? "Well Done!" : "Failed";
+        resultTextView.setText(resultMessage);
 
+        // If the user failed, update wtgm1TextView with a motivational message
+        if (resultMessage.equals("Failed")) {
+            wtgm1TextView.setText("Don't worry! Every step toward learning about the environment makes a difference. Keep going, and you'll get there! Click 'Next' to watch an educational video and discover simple ways to reduce your carbon footprint.");
+        }
+
+        saveScoreToFirestore(score, resultMessage);
 
         btnq1done.setOnClickListener(v -> {
-            markPreAssessmentCompleted(); // Store completion in Firestore
-            navigateToNavbar(score);
+            markPreAssessmentCompleted(); // Mark assessment as completed in Firestore
+            navigateToNavbar(score, resultMessage);
         });
     }
 
-    private void saveScoreToFirestore(int score) {
-        String username = auth.getCurrentUser() != null ? auth.getCurrentUser().getDisplayName() : null;
-
+    private void saveScoreToFirestore(int score, String result) {
+        String username = (auth.getCurrentUser() != null) ? auth.getCurrentUser().getDisplayName() : null;
         if (username != null) {
             Map<String, Object> scoreData = new HashMap<>();
             scoreData.put("score", score);
             scoreData.put("timestamp", System.currentTimeMillis());
             scoreData.put("isCompleted", true); // Mark quiz as completed
             scoreData.put("username", username);
+            scoreData.put("result", result);      // Store result message
 
             db.collection("PostAssess")
                     .document(username)
@@ -75,18 +83,17 @@ public class PostAssess1After extends AppCompatActivity {
         }
     }
 
-
-
-    private void navigateToNavbar(int score) {
+    private void navigateToNavbar(int score, String result) {
         Intent intent = new Intent(this, navbar.class);
         intent.putExtra("isCompleted", true);
         intent.putExtra("score", score);
+        intent.putExtra("result", result); // Pass the result message
         startActivity(intent);
         finish();
     }
 
     private void markPreAssessmentCompleted() {
-        String username = auth.getCurrentUser() != null ? auth.getCurrentUser().getDisplayName() : null;
+        String username = (auth.getCurrentUser() != null) ? auth.getCurrentUser().getDisplayName() : null;
         if (username != null) {
             DocumentReference docRef = db.collection("PostAssess").document(username);
             docRef.update("isCompleted", true)

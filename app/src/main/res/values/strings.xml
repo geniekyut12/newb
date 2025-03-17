@@ -5,7 +5,7 @@
     <string name="Email_Uname">Email/Username</string>
     <string name="getstart">Click anywhere to start!</string>
     <string name="Password">Password</string>
-    <string name="forgotpassword"><u>Forgot Password</u></string>
+    <string name="forgotpassword"><u>Forgot Password?</u></string>
     <string name="login">Login</string>
     <string name="reg">New to C-Verde? SignUp</string>
     <string name="logo">\n</string>
@@ -147,7 +147,7 @@
     <string name="transpo">Transportation</string>
     <string name="welcome4">The food we eat also impacts the environment. Locally grown and plant-based foods have a lower carbon footprint compared to processed and imported goods.</string>
     <string name="food">Food</string>
-    <string name="heard">Have you heard?</string>
+    <string name="heard">Have you\n heard?</string>
     <string name="welcome5">We can reduce our carbon footprint by using public transport, saving energy, reducing waste, choosing sustainable food, and planting trees.</string>
     <string name="user">nnnn</string>
 
@@ -236,6 +236,8 @@
     <string name="Act1">You earned Eco Rookie badge.</string>
     <string name="time">5:49 PM</string>
     <string name="today">TODAY</string>
+    <string name="register">REGISTER</string>
+    <string name="certs">Certificates</string>
 
 
 </resources>

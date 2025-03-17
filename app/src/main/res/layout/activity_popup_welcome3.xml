@@ -1,7 +1,7 @@
 <android.widget.ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="6dp">
+    android:padding="-12sp">
 
     <LinearLayout
         android:orientation="vertical"
@@ -14,7 +14,7 @@
             android:id="@+id/desgin2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8sp"
+            android:layout_marginTop="12sp"
             android:gravity="center"
             android:orientation="vertical">
 
@@ -30,7 +30,7 @@
             android:id="@+id/text32"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="-190dp"
+            android:layout_marginTop="-120dp"
             android:gravity="center"
         android:orientation="vertical">
 
@@ -39,7 +39,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/transpo"
-            android:textSize="24sp"
+            android:textSize="22sp"
             android:layout_gravity="left"
             android:fontFamily="@font/poppinsmedium"
             android:textColor="@color/YGreen"
@@ -52,10 +52,10 @@
             android:layout_height="85sp"
             android:text="@string/welcome3"
             android:textSize="14sp"
-            android:textAlignment="center"
+            android:layout_marginTop="-5dp"
+            android:textAlignment="textStart"
             android:fontFamily="@font/poppinsregular"
-            android:textColor="@color/YGreen"
-            android:gravity="center"/>
+            android:textColor="@color/YGreen" />
     </LinearLayout>
 
     <!-- Button for next, placed below popUpText13 -->
@@ -63,7 +63,8 @@
         android:id="@+id/btnnxt1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="48sp"
+        android:layout_marginTop="35sp"
+        android:layout_marginBottom="35sp"
         android:gravity="center">
 
         <Button
@@ -72,8 +73,11 @@
             android:layout_height="50sp"
             android:layout_marginTop="0dp"
             android:layout_marginEnd="50sp"
-            android:background="@drawable/redbtn"
+            style="@style/popupbtn"
             android:fontFamily="@font/poppinsmedium"
+            android:textColor="@color/WBlue"
+            android:textSize="20sp"
+            android:textAlignment="center"
             android:text="@string/back" />
 
         <Button
@@ -81,7 +85,7 @@
             android:layout_width="120sp"
             android:layout_height="50sp"
             android:layout_marginTop="0dp"
-            android:background="@drawable/redbtn"
+            style="@style/popupbtn"
             android:fontFamily="@font/poppinsmedium"
             android:text="@string/next" />
     </LinearLayout>

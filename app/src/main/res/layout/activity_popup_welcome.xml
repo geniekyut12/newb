@@ -15,6 +15,7 @@
         android:id="@+id/popUpImage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="15sp"
         android:src="@drawable/welcomemain" />
 
     <!-- Text bubble -->
@@ -37,9 +38,10 @@
         android:id="@+id/btnWNext"
         android:layout_width="120sp"
         android:layout_height="50sp"
-        android:layout_marginTop="92dp"
+        android:layout_marginTop="122dp"
+        android:layout_marginBottom="-30sp"
         android:layout_gravity="center"
-        android:background="@drawable/redbtn"
+        style="@style/popupbtn"
         android:fontFamily="@font/poppinsmedium"
         android:text="@string/next" />
 

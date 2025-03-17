@@ -1,14 +1,15 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
+    <!-- Base application theme -->
     <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
-        <!-- Customize your theme here. -->
+        <!-- Define your primary color -->
+        <item name="colorPrimary">@color/WBlue</item>
+        <!-- Apply Material button style -->
+        <item name="materialButtonStyle">@style/Widget.MaterialComponents.Button</item>
     </style>
 
-    <!-- Customize your light theme here. -->
-    <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
-
-    <!-- Update Theme.CVERDETOTOO to inherit from a MaterialComponents theme -->
     <style name="Theme.CVERDETOTOO" parent="Theme.MaterialComponents.Light.NoActionBar">
-        <!-- Customize your theme here. -->
+        <!-- Use drawable as background for buttons -->
+        <item name="android:buttonStyle">@style/CustomButtonStyle</item>
     </style>
+
 </resources>

@@ -6,14 +6,12 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.QueryDocumentSnapshot;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -21,7 +19,7 @@ import java.util.Map;
 public class PreAssess1After extends AppCompatActivity {
 
     private Button btnq1done;
-    private TextView scoreTextView;
+    private TextView scoreTextView, resultTextView, wtgm1TextView; // Added wtgm1TextView for motivational message
     private FirebaseFirestore db;
     private FirebaseAuth auth;
 
@@ -40,20 +38,30 @@ public class PreAssess1After extends AppCompatActivity {
 
         btnq1done = findViewById(R.id.pre1done);
         scoreTextView = findViewById(R.id.pre1score);
+        resultTextView = findViewById(R.id.wtg);   // Displays "Well Done!" or "Failed"
+        wtgm1TextView = findViewById(R.id.wtgm1);    // Displays the motivational message if the user failed
 
         int score = getIntent().getIntExtra("score", 0);
         scoreTextView.setText(String.valueOf(score));
 
-        saveScoreToFirestore(score);
+        // Determine result message
+        String resultMessage = (score >= 4) ? "Well Done!" : "Failed";
+        resultTextView.setText(resultMessage);
 
+        // If the user failed, update wtgm1 with the motivational message
+        if(resultMessage.equals("Failed")){
+            wtgm1TextView.setText("Don't worry! Every step toward learning about the environment makes a difference. Keep going, and you'll get there! Click 'Next' to watch an educational video and discover simple ways to reduce your carbon footprint.");
+        }
+
+        saveScoreToFirestore(score, resultMessage);
 
         btnq1done.setOnClickListener(v -> {
             markPreAssessmentCompleted(); // Store completion in Firestore
-            navigateToNavbar(score);
+            navigateToNavbar(score, resultMessage);
         });
     }
 
-    private void saveScoreToFirestore(int score) {
+    private void saveScoreToFirestore(int score, String result) {
         String username = auth.getCurrentUser() != null ? auth.getCurrentUser().getDisplayName() : null;
 
         if (username != null) {
@@ -62,6 +70,7 @@ public class PreAssess1After extends AppCompatActivity {
             scoreData.put("timestamp", System.currentTimeMillis());
             scoreData.put("isCompleted", true); // Mark quiz as completed
             scoreData.put("username", username);
+            scoreData.put("result", result);      // Store result message
 
             db.collection("PreAssess")
                     .document(username)
@@ -75,12 +84,11 @@ public class PreAssess1After extends AppCompatActivity {
         }
     }
 
-
-
-    private void navigateToNavbar(int score) {
+    private void navigateToNavbar(int score, String result) {
         Intent intent = new Intent(this, navbar.class);
         intent.putExtra("isCompleted", true);
         intent.putExtra("score", score);
+        intent.putExtra("result", result); // Pass result message
         startActivity(intent);
         finish();
     }

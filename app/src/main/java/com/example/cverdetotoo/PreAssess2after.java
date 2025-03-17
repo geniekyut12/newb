@@ -11,7 +11,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.QueryDocumentSnapshot;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -19,9 +18,9 @@ import java.util.Map;
 public class PreAssess2after extends AppCompatActivity {
 
     private Button btnq1done;
-    private TextView scoreTextView; // For displaying the numeric score and correct answers
-    private FirebaseFirestore db;   // Firestore instance
-    private FirebaseAuth auth;      // Firebase Authentication instance
+    private TextView scoreTextView, resultTextView, wtgm1TextView; // Added wtgm1TextView for motivational message
+    private FirebaseFirestore db;
+    private FirebaseAuth auth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,42 +28,41 @@ public class PreAssess2after extends AppCompatActivity {
         if (getSupportActionBar() != null) {
             getSupportActionBar().hide();
         }
-        // Initialize Firebase before using any Firebase service
         FirebaseApp.initializeApp(this);
         setContentView(R.layout.activity_pre_assess2after);
 
-        // Initialize Firebase Authentication and Firestore
         auth = FirebaseAuth.getInstance();
         db = FirebaseFirestore.getInstance();
 
-        // Initialize button and TextView
         btnq1done = findViewById(R.id.pre2done);
         scoreTextView = findViewById(R.id.pre2score);
+        resultTextView = findViewById(R.id.wtg);
+        wtgm1TextView = findViewById(R.id.wtgm); // Make sure this exists in your XML layout
 
-        // Retrieve the score passed from the previous activity
         int score = getIntent().getIntExtra("score", 0);
-
-        // Display only the numeric score in the TextView
         scoreTextView.setText(String.valueOf(score));
 
-        // Save the score to Firestore
-        saveScoreToFirestore(score);
+        // Determine pass/fail message
+        String resultMessage = (score >= 4) ? "Well Done!" : "Failed";
+        resultTextView.setText(resultMessage);
 
+        // If failed, update wtgm1 TextView with a motivational message
+        if (resultMessage.equals("Failed")) {
+            wtgm1TextView.setText("Don't worry! Every step toward learning about the environment makes a difference. Keep going, and you'll get there! Click 'Next' to watch an educational video and discover simple ways to reduce your carbon footprint.");
+        }
 
+        saveScoreToFirestore(score, resultMessage);
 
-        // Set click listener for the button
         btnq1done.setOnClickListener(v -> {
             if (validateBeforeRedirect()) {
-                navigateToNavbar(score);
+                navigateToVideo(score, resultMessage);
             } else {
                 Toast.makeText(PreAssess2after.this, "Validation failed!", Toast.LENGTH_SHORT).show();
             }
         });
     }
 
-    // Save score to Firestore
-    private void saveScoreToFirestore(int score) {
-        // Get the current user from Firebase Authentication
+    private void saveScoreToFirestore(int score, String result) {
         String username = auth.getCurrentUser() != null ? auth.getCurrentUser().getDisplayName() : null;
 
         if (username != null) {
@@ -72,6 +70,7 @@ public class PreAssess2after extends AppCompatActivity {
             scoreData.put("score", score);
             scoreData.put("timestamp", System.currentTimeMillis());
             scoreData.put("username", username);
+            scoreData.put("result", result);
 
             db.collection("PreAssess2")
                     .document(username)
@@ -85,18 +84,15 @@ public class PreAssess2after extends AppCompatActivity {
         }
     }
 
-    // Fetch all correct answers from Firestore (stored in the "quiz" collection)
-      // Validation logic before navigating
     private boolean validateBeforeRedirect() {
-        // Replace with your actual validation logic if needed
-        return true;
+        return true; // Update with your actual validation logic if needed
     }
 
-    // Navigate to the next activity (video1) and pass necessary data
-    private void navigateToNavbar(int score) {
+    private void navigateToVideo(int score, String result) {
         Intent intent = new Intent(this, video1.class);
         intent.putExtra("isQuizDone", true);
         intent.putExtra("score", score);
+        intent.putExtra("result", result);
         startActivity(intent);
         finish();
     }

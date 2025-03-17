@@ -3,7 +3,7 @@
     android:orientation="vertical"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:padding="6dp"
+    android:padding="14sp"
     android:background="@drawable/welcomebg"
     android:gravity="center">
 
@@ -11,7 +11,6 @@
         android:id="@+id/desgin2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8sp"
         android:gravity="center"
         android:orientation="vertical">
 
@@ -21,26 +20,28 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/welcome5" />
+
+        <TextView
+            android:id="@+id/popUpText133"
+            android:layout_width="wrap_content"
+            android:layout_height="90sp"
+            android:layout_marginTop="-310sp"
+            android:layout_marginStart="40sp"
+            android:text="@string/heard"
+            android:textSize="20sp"
+            android:background="@drawable/bubble1"
+            android:fontFamily="@font/poppinsmedium"
+            android:textColor="@color/BlckYellow"
+            android:textAlignment="center"/>
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/text32"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="-120sp"
+        android:layout_marginTop="-110sp"
         android:gravity="center"
         android:orientation="vertical">
-
-        <TextView
-            android:id="@+id/popUpText133"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/heard"
-            android:textSize="24sp"
-            android:layout_gravity="left"
-            android:fontFamily="@font/poppinsmedium"
-            android:textColor="@color/YGreen"
-            android:gravity="center"/>
 
         <!-- TextView popUpText13 at the bottom center -->
         <TextView
@@ -61,8 +62,8 @@
         android:id="@+id/btnnxt1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="38sp"
-        android:layout_marginBottom="38sp"
+        android:layout_marginTop="78sp"
+        android:layout_marginBottom="8sp"
         android:gravity="center">
 
         <Button
@@ -71,7 +72,7 @@
             android:layout_height="50sp"
             android:layout_marginTop="-1sp"
             android:layout_marginEnd="50sp"
-            android:background="@drawable/redbtn"
+            style="@style/popupbtn"
             android:fontFamily="@font/poppinsmedium"
             android:text="@string/back" />
 
@@ -80,7 +81,7 @@
             android:layout_width="120sp"
             android:layout_height="50sp"
             android:layout_marginTop="-1sp"
-            android:background="@drawable/redbtn"
+            style="@style/popupbtn"
             android:fontFamily="@font/poppinsmedium"
             android:text="@string/next" />
     </LinearLayout>

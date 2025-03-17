@@ -20,12 +20,11 @@
         <item name="android:backgroundDimEnabled">true</item>
     </style>
 
-    <!-- res/values/styles.xml -->
+    <!-- Custom RadioButton -->
     <style name="CustomRadioButton" parent="Widget.MaterialComponents.CompoundButton.RadioButton">
         <item name="android:buttonTint">@color/Green</item> <!-- Green circle color -->
         <item name="android:textColor">@color/LBrown</item> <!-- Text color -->
     </style>
-
 
     <!-- Full-screen theme for VehicleStatusActivity -->
     <style name="Theme.AppCompat.Light.NoActionBar.FullScreen" parent="Theme.AppCompat.Light.NoActionBar">
@@ -33,5 +32,25 @@
         <item name="android:windowIsTranslucent">true</item>
         <item name="android:windowBackground">@android:color/black</item>
     </style>
+
+    <!-- BUTTON SA POP-UP NG WELCOME -->
+    <style name="popupbtn" parent="Widget.MaterialComponents.Button">
+        <item name="android:background">@drawable/redbtn</item>
+        <item name="backgroundTint">@null</item> <!-- Removes Material default tint -->
+    </style>
+
+    <!-- Register Style -->
+    <style name="popupbtn1" parent="Widget.MaterialComponents.Button">
+        <item name="android:background">@drawable/redbtn1</item>
+        <item name="backgroundTint">@null</item>
+    </style>
+
+    <!-- Custom Button Style -->
+    <style name="gradientt" parent="Widget.MaterialComponents.Button">
+        <item name="android:background">@drawable/btnbg23</item>
+        <item name="backgroundTint">@null</item>
+    </style>
+
+
 
 </resources>
