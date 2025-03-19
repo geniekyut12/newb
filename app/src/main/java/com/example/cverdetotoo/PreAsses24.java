@@ -67,26 +67,30 @@ public class PreAsses24 extends AppCompatActivity {
                 // Cancel the timer
                 countDownTimer.cancel();
 
+                // Define custom darker colors
+                int darkGreen = 0xFF00CC00;  // Dark green: 20% darker than bright green
+                int darkRed = 0xFFCC0000;    // Dark red: 20% darker than bright red
+
                 // Reset the colors of all radio buttons (in case user is retrying)
                 resetRadioButtonColors(radioGroup);
 
                 if (selectedId == correctAnswerId) {
-                    // Correct answer: update the selected radio button color to green
+                    // Correct answer: update the selected radio button color to dark green
                     RadioButton selectedRadioButton = findViewById(selectedId);
-                    selectedRadioButton.setTextColor(Color.GREEN);
-                    selectedRadioButton.setButtonTintList(ColorStateList.valueOf(Color.GREEN));
+                    selectedRadioButton.setTextColor(darkGreen);
+                    selectedRadioButton.setButtonTintList(ColorStateList.valueOf(darkGreen));
                     Toast.makeText(PreAsses24.this, "Correct!", Toast.LENGTH_SHORT).show();
                     score++;  // Increase score
                 } else {
-                    // Wrong answer: mark the selected radio button red
+                    // Wrong answer: mark the selected radio button dark red
                     RadioButton selectedRadioButton = findViewById(selectedId);
-                    selectedRadioButton.setTextColor(Color.RED);
-                    selectedRadioButton.setButtonTintList(ColorStateList.valueOf(Color.RED));
+                    selectedRadioButton.setTextColor(darkRed);
+                    selectedRadioButton.setButtonTintList(ColorStateList.valueOf(darkRed));
 
-                    // Also highlight the correct answer in green
+                    // Also highlight the correct answer in dark green
                     RadioButton correctRadioButton = findViewById(correctAnswerId);
-                    correctRadioButton.setTextColor(Color.GREEN);
-                    correctRadioButton.setButtonTintList(ColorStateList.valueOf(Color.GREEN));
+                    correctRadioButton.setTextColor(darkGreen);
+                    correctRadioButton.setButtonTintList(ColorStateList.valueOf(darkGreen));
                     Toast.makeText(PreAsses24.this, "Incorrect!", Toast.LENGTH_SHORT).show();
                 }
 

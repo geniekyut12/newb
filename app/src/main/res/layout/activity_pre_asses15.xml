@@ -163,22 +163,24 @@
             <Button
                 android:id="@+id/preq15"
                 android:layout_width="137dp"
-                android:layout_height="65dp"
-                android:textAllCaps="false"
+                android:layout_height="55dp"
+                style="@style/assessbtn"
+                android:textColor="@color/BlckGreen"
                 android:fontFamily="@font/poppinsregular"
+                android:textAllCaps="false"
                 android:text="@string/submit"
-                android:background="@drawable/preassesbtn"
                 android:textSize="20sp"
                 android:backgroundTint="@null"/>
 
             <Button
                 android:id="@+id/next15"
                 android:layout_width="137dp"
-                android:layout_height="65dp"
+                android:layout_height="55dp"
+                style="@style/assessbtn"
+                android:textColor="@color/BlckGreen"
+                android:fontFamily="@font/poppinsregular"
                 android:layout_marginStart="30sp"
                 android:textAllCaps="false"
-                android:fontFamily="@font/poppinsregular"
-                android:background="@drawable/preassesbtn2"
                 android:text="@string/next"
                 android:textSize="20sp"
                 android:backgroundTint="@null" />

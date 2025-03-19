@@ -1,10 +1,12 @@
 package com.example.cverdetotoo;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
 import android.widget.ProgressBar;
+import android.widget.VideoView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -26,11 +28,21 @@ public class Loadingpage extends AppCompatActivity {
 
         // Delay for 3 seconds then redirect to navbar activity
         new Handler().postDelayed(() -> navigateTo(navbar.class), LOADING_TIME);
+
     }
 
     private void navigateTo(Class<?> destination) {
         Intent intent = new Intent(Loadingpage.this, destination);
         startActivity(intent);
         finish();
+
+        // Initialize and set up VideoView
+        VideoView videoView = findViewById(R.id.videoViewBackground1);
+        Uri uri = Uri.parse("android.resource://" + getPackageName() + "/" + R.raw.mainbg);
+        videoView.setVideoURI(uri);
+        videoView.setOnPreparedListener(mp -> {
+            mp.setLooping(true);
+            videoView.start();
+        });
     }
 }

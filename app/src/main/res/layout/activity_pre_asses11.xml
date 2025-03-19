@@ -162,24 +162,27 @@
             <Button
                 android:id="@+id/preq11"
                 android:layout_width="137dp"
-                android:layout_height="65dp"
-                android:background="@drawable/preassesbtn"
+                android:layout_height="55dp"
+                style="@style/assessbtn"
+                android:textColor="@color/BlckGreen"
+                android:fontFamily="@font/poppinsregular"
                 android:backgroundTint="@null"
                 android:text="@string/submit"
                 android:textAllCaps="false"
-                android:fontFamily="@font/poppinsregular"
                 android:textSize="20sp" />
 
             <Button
                 android:id="@+id/next11"
                 android:layout_width="137dp"
-                android:layout_height="65dp"
+                android:layout_height="55dp"
+                style="@style/assessbtn"
+                android:textColor="@color/BlckGreen"
+                android:fontFamily="@font/poppinsregular"
                 android:layout_marginStart="30sp"
-                android:background="@drawable/preassesbtn2"
                 android:text="@string/next"
                 android:textSize="20sp"
                 android:textAllCaps="false"
-                android:fontFamily="@font/poppinsregular"
+
                 android:backgroundTint="@null" />
 
         </LinearLayout>

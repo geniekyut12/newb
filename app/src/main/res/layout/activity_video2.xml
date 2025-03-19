@@ -27,12 +27,13 @@
         android:id="@+id/top_overlay2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_marginTop="20sp"
+        android:orientation="horizontal"
         android:padding="16dp"
+        android:layout_marginTop="20sp"
         android:layout_gravity="top">
 
-        <!-- Add any progress indicators or user info here -->
+
+    <!-- Add any progress indicators or user info here -->
 
         <ImageButton
             android:id="@+id/close_button2"
@@ -40,6 +41,15 @@
             android:layout_height="60sp"
             android:backgroundTint="@color/WRed"
             android:background="@drawable/backbutton"
+            android:contentDescription="@string/closestory" />
+
+        <ImageButton
+            android:id="@+id/next_button2"
+            android:layout_width="60sp"
+            android:layout_height="60sp"
+            android:layout_marginStart="255sp"
+            android:backgroundTint="@color/WRed"
+            android:background="@drawable/next"
             android:contentDescription="@string/closestory" />
     </LinearLayout>
 </FrameLayout>

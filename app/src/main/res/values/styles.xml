@@ -56,8 +56,33 @@
         <item name="android:textColor">@color/LBrown</item>
     </style>
 
-    <style name="walangdes">
+    <style name="walangdes" parent="Widget.MaterialComponents.Button">
         <item name="android:background">@drawable/btngetstart</item>
+        <item name="backgroundTint">@null</item>
+    </style>
+
+    <!-- Actlog Button -->
+    <style name="actlogg" parent="Widget.MaterialComponents.Button">
+        <item name="android:background">@drawable/actlogbgg</item>
+        <item name="backgroundTint">@null</item>
+    </style>
+
+    <!-- PreAsses Button -->
+    <style name="assessbtn" parent="Widget.MaterialComponents.Button">
+        <item name="android:background">@drawable/preassesbtn</item>
+        <item name="backgroundTint">@null</item>
+    </style>
+
+    <!-- PreAsses Button -->
+    <style name="assessbtn1" parent="Widget.MaterialComponents.Button">
+        <item name="android:background">@drawable/preassesbtn2</item>
+        <item name="backgroundTint">@null</item>
+    </style>
+
+    <!-- PostAsses Button -->
+    <style name="assessbtn3" parent="Widget.MaterialComponents.Button">
+        <item name="android:background">@drawable/btnblue</item>
+        <item name="backgroundTint">@null</item>
     </style>
 
 

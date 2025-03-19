@@ -12,14 +12,15 @@
 
         <ImageView
             android:id="@+id/imageView"
-            android:layout_width="212dp"
-            android:layout_height="212dp"
-            android:layout_marginTop="60dp"
+            android:layout_width="132dp"
+            android:layout_height="132dp"
+            android:layout_marginTop="120dp"
             android:layout_marginStart="16dp"
+            android:layout_marginBottom="1sp"
             android:layout_marginEnd="16dp"
             android:contentDescription="@string/logo_description"
             android:layout_centerHorizontal="true"
-            app:srcCompat="@drawable/final_logo" />
+            app:srcCompat="@drawable/cverdee" />
 
         <TextView
             android:id="@+id/postinstruc1"
@@ -55,7 +56,10 @@
             android:layout_below="@id/motivationalText"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="20dp"
-            android:background="@drawable/preassesbtn"
+            style="@style/assessbtn"
+            android:fontFamily="@font/poppinsmedium"
+            android:textSize="20sp"
+            android:textColor="@color/BlckGreen"
             android:text="@string/start" />
 
     </RelativeLayout>

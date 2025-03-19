@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.LinearInterpolator;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -43,6 +44,9 @@ import java.util.Map;
 
 public class HomeFragment extends Fragment {
 
+
+    private FirebaseFirestore db;
+
     private static final String TAG = "HomeFragment";
     private ActivityResultLauncher<Intent> preAssessLauncher;
 
@@ -68,6 +72,7 @@ public class HomeFragment extends Fragment {
 
         // Check if the account deletion is scheduled and show the prompt if so.
         checkDeletionSchedule();
+
 
         // Register the ActivityResultLauncher for PreAssess activities.
         preAssessLauncher = registerForActivityResult(
@@ -154,6 +159,7 @@ public class HomeFragment extends Fragment {
                 startActivity(triviaIntent);
             }
         });
+
 
         // Add animation for the mascot.
         // Slower and shorter movement: translationX from 0 to 50 over 2.5 seconds.

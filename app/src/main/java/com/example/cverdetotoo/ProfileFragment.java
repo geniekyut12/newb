@@ -106,10 +106,20 @@ public class ProfileFragment extends Fragment {
         settingsLayout.setOnClickListener(v -> startActivity(new Intent(getActivity(), Settings.class)));
 
         TextView textSeeAll = view.findViewById(R.id.textSeeAll);
-        textSeeAll.setOnClickListener(v -> getActivity().getSupportFragmentManager()
-                .beginTransaction()
-                .replace(R.id.constraintLayout, new BadgesFragment())
-                .commit());
+        textSeeAll.setOnClickListener(v -> {
+            Fragment badgesFragment = new BadgesFragment();
+            requireActivity().getSupportFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.fragment_container, badgesFragment) // Ensure this is the correct ID
+                    .addToBackStack(null) // Allows user to navigate back
+                    .commit();
+        });
+            TextView textCert = view.findViewById(R.id.textCertSeeAll);
+            textCert.setOnClickListener(v -> {
+                Intent intent = new Intent(getActivity(), CertificateActivity.class);
+                startActivity(intent);
+            });
+
 
         TextView textGreeting = view.findViewById(R.id.textGreeting);
         if (mAuth.getCurrentUser() != null) {
@@ -169,6 +179,8 @@ public class ProfileFragment extends Fragment {
             imageSelectedCharacter.setImageResource(selectedCharacter.getImageResId());
             textSelectedCharacterName.setText(selectedCharacter.getName());
         }
+
+
 
         // Build unlocked character list
         List<CharacterModel> unlockedList = new ArrayList<>();

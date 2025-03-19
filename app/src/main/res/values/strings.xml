@@ -189,7 +189,7 @@
     <string name="default_web_client_id" />
     <string name="ActLog">Activity Log</string>
     <string name="ResetPass">Reset Password</string>
-    <string name="seeAll">See All</string>
+    <string name="seeAll"><u>See All</u></string>
     <string name="badges">My Badges</string>
     <string name="stats">Statistics</string>
     <string name="challenge">Challenges</string>
@@ -239,6 +239,32 @@
     <string name="register">REGISTER</string>
     <string name="certs">Certificates</string>
     <string name="foood">Our food is very important</string>
+    <string name="dlcert">Download as Image</string>
+    <string name="dlcert1">Download as PDF</string>
+    <string name="certsInst">Please choose <u>\"Download as PDF\" or \"Download as Image\"</u> now. Once you return to the homepage, you won\'t be able to download your certificate again.</string>
+    <string name="postqeus21">Which of the following best describes the effect of carbon emissions on ocean acidification?</string>
+    <string name="postQ21a">It has no impact on marine life</string>
+    <string name="postQ21d">It benefits marine biodiversity</string>
+    <string name="postQ21c">It only affects coastal landscapes</string>
+    <string name="postQ21b">" It affects marine life"</string>
+    <string name="postqeus22">Which statement accurately reflects the impact of cutting down trees on carbon footprints?</string>
+    <string name="postQ22a">It helps reduce carbon footprints</string>
+    <string name="postQ22b">It has no effect on carbon footprints</string>
+    <string name="postQ22c">It increases carbon footprints</string>
+    <string name="postqeus23">Which of the following statements is true about the relationship between climate change and extreme weather?</string>
+    <string name="postQ23d">Climate change decreases the occurrence of hurricanes and wildfires</string>
+    <string name="postQ23c">Climate change only causes minor weather variations</string>
+    <string name="postQ23b">It leads to more extreme weather events like hurricanes and wildfires</string>
+    <string name="postQ23a">It does not influence weather patterns.</string>
+    <string name="postQ24d">Carbon dioxide (CO₂)</string>
+    <string name="postQ24c">Methane</string>
+    <string name="postQ24b">Nitrous oxide</string>
+    <string name="postQ24a">Ozone Layer</string>
+    <string name="postqeus25">A sustainable way to reduce carbon footprints is by using ______ energy instead of fossil fuels.</string>
+    <string name="postQ25d">Nuclear</string>
+    <string name="postQ25c">Conventional</string>
+    <string name="postQ25b">Non-renewable</string>
+    <string name="postQ25a">Renewable</string>
 
 
 </resources>

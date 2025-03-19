@@ -163,6 +163,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/topBarLayout"
         app:layout_constraintWidth_percent="1.0">
+
         <ImageView
             android:id="@+id/imageAvatar"
             android:layout_width="320dp"
@@ -229,6 +230,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="15sp"
+                        android:fontFamily="@font/poppins_semibold"
                         android:text="@string/badges"
                         android:textColor="@android:color/white"
                         android:textSize="20sp"
@@ -247,7 +249,7 @@
                         android:layout_marginEnd="25sp"
                         android:clickable="true"
                         android:focusable="true"
-                        android:fontFamily="@font/poppins_semibold_italic"
+                        android:fontFamily="@font/poppins_italic"
                         android:text="@string/seeAll"
                         android:textColor="@android:color/white"
                         android:textSize="20sp" />
@@ -296,6 +298,91 @@
                             android:layout_height="70dp"
                             android:layout_marginEnd="16dp"
                             android:src="@drawable/ecogold" />
+                    </LinearLayout>
+                </HorizontalScrollView>
+
+                <!-- "My Badge" row -->
+                <LinearLayout
+                    android:id="@+id/linearCertTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="15sp"
+                    android:paddingBottom="8dp">
+
+                    <TextView
+                        android:id="@+id/textcert"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="15sp"
+                        android:fontFamily="@font/poppins_semibold"
+                        android:text="@string/certs"
+                        android:textColor="@android:color/white"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="1dp"
+                        android:layout_weight="1" />
+
+                    <TextView
+                        android:id="@+id/textCertSeeAll"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="-5sp"
+                        android:layout_marginEnd="25sp"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:fontFamily="@font/poppins_italic"
+                        android:text="@string/seeAll"
+                        android:textColor="@android:color/white"
+                        android:textSize="20sp" />
+                </LinearLayout>
+
+                <!-- Horizontal ScrollView for Badges -->
+                <HorizontalScrollView
+                    android:id="@+id/certScrollView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:background="@drawable/bgbrown"
+                    android:clipToPadding="false"
+                    android:paddingTop="8dp"
+                    android:paddingBottom="8dp">
+
+                    <LinearLayout
+                        android:id="@+id/linearCertContainer"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:orientation="horizontal"
+                        android:paddingLeft="16dp"
+                        android:paddingRight="16dp">
+                        <!-- Example Badges -->
+                        <ImageView
+                            android:layout_width="75dp"
+                            android:layout_height="75dp"
+                            android:layout_marginEnd="16dp"
+                            android:src="@drawable/cert1" />
+
+                        <ImageView
+                            android:layout_width="70dp"
+                            android:layout_height="70dp"
+                            android:layout_marginEnd="16dp"
+                            android:src="@drawable/cert2" />
+
+                        <ImageView
+                            android:layout_width="70dp"
+                            android:layout_height="70dp"
+                            android:layout_marginEnd="16dp"
+                            android:src="@drawable/cert3" />
+
+                        <ImageView
+                            android:layout_width="70dp"
+                            android:layout_height="70dp"
+                            android:layout_marginEnd="16dp"
+                            android:src="@drawable/cert5" />
                     </LinearLayout>
                 </HorizontalScrollView>
 
@@ -396,10 +483,10 @@
                             android:layout_gravity="center"
                             android:layout_marginTop="5sp"
                             android:gravity="center"
-                            android:background="@drawable/actlogbgg"
+                            style="@style/actlogg"
                             android:fontFamily="@font/poppins_semibold"
                             android:text="@string/ActLog"
-                            android:textColor="@color/BlckYellow"
+                            android:textColor="@color/WRed"
                             android:textSize="20sp"
                             android:textStyle="bold"
                             android:layout_marginBottom="12dp"/>
@@ -418,57 +505,13 @@
                     </LinearLayout>
                 </LinearLayout>
 
-                <!-- Selected Character Section -->
-                <LinearLayout
-                    android:id="@+id/selectedCharacterContainer"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:layout_marginTop="16dp">
-
-                    <!-- Display the currently selected character -->
-                    <ImageView
-                        android:id="@+id/imageSelectedCharacter"
-                        android:layout_width="200dp"
-                        android:layout_height="200dp"
-                        android:scaleType="fitCenter"
-                        android:layout_gravity="center_horizontal"
-                        android:src="@drawable/character" />
-
-                    <!-- Display the selected character's name -->
-                    <TextView
-                        android:id="@+id/textSelectedCharacterName"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/character1"
-                        android:textSize="18sp"
-                        android:textStyle="bold"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_marginTop="8dp"
-                        android:textColor="@color/WBlue"
-                        tools:ignore="HardcodedText" />
-
-                    <!-- Label for unlocked characters -->
-                    <TextView
-                        android:id="@+id/textUnlockedCharactersLabel"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textAlignment="center"
-                        android:text="@string/charmess"
-                        android:fontFamily="@font/poppins_italic"
-                        android:textSize="16sp"
-                        android:layout_marginStart="25sp"
-                        android:layout_marginTop="8dp"
-                        android:textColor="@color/WBlue"/>
-
-                    <!-- Horizontal RecyclerView for unlocked characters -->
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/recyclerUnlockedChars"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:clipToPadding="false" />
-                </LinearLayout>
+                <View
+                    android:layout_width="350sp"
+                    android:layout_height="1dp"
+                    android:layout_gravity="center"
+                    android:background="@android:color/darker_gray"
+                    android:layout_marginTop="56dp"
+                    android:layout_marginBottom="56dp" />
 
                 <!-- RadioGroup for Weekly/Monthly toggle -->
                 <RadioGroup
@@ -503,6 +546,14 @@
                     android:layout_height="250dp"
                     android:layout_marginTop="16dp"
                     android:layout_marginBottom="16dp"/>
+
+                <View
+                    android:layout_width="350sp"
+                    android:layout_height="1dp"
+                    android:layout_gravity="center"
+                    android:background="@android:color/darker_gray"
+                    android:layout_marginTop="56dp"
+                    android:layout_marginBottom="16dp" />
 
                 <!-- TOWER SECTION -->
                 <FrameLayout
@@ -641,6 +692,76 @@
 
                 </FrameLayout>
 
+                <View
+                    android:layout_width="350sp"
+                    android:layout_height="1dp"
+                    android:layout_gravity="center"
+                    android:background="@android:color/darker_gray"
+                    android:layout_marginTop="56dp"
+                    android:layout_marginBottom="56dp" />
+
+                <!-- Selected Character Section -->
+                <LinearLayout
+                    android:id="@+id/selectedCharacterContainer"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginTop="16dp">
+
+                    <!-- Display the currently selected character -->
+                    <ImageView
+                        android:id="@+id/imageSelectedCharacter"
+                        android:layout_width="200dp"
+                        android:layout_height="200dp"
+                        android:scaleType="fitCenter"
+                        android:layout_gravity="center_horizontal"
+                        android:src="@drawable/character" />
+
+                    <!-- Display the selected character's name -->
+                    <TextView
+                        android:id="@+id/textSelectedCharacterName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/character1"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="8dp"
+                        android:textColor="@color/WBlue"
+                        tools:ignore="HardcodedText" />
+
+                    <View
+                        android:layout_width="350sp"
+                        android:layout_height="1dp"
+                        android:layout_gravity="center"
+                        android:background="@android:color/darker_gray"
+                        android:layout_marginTop="26dp"
+                        android:layout_marginBottom="26dp" />
+
+
+                    <!-- Horizontal RecyclerView for unlocked characters -->
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recyclerUnlockedChars"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:clipToPadding="false" />
+
+                    <!-- Label for unlocked characters -->
+                    <TextView
+                        android:id="@+id/textUnlockedCharactersLabel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAlignment="center"
+                        android:text="@string/charmess"
+                        android:fontFamily="@font/poppins_italic"
+                        android:textSize="16sp"
+                        android:layout_marginStart="40sp"
+                        android:layout_marginTop="8dp"
+                        android:textColor="@color/WBlue"/>
+                </LinearLayout>
+
+
 
                 <!-- Bottom Button -->
                 <Button
@@ -650,9 +771,9 @@
                     android:layout_marginTop="5sp"
                     android:layout_marginBottom="15dp"
                     android:text="@string/selectChar"
-                    android:background="@drawable/btnblue"
+                    style="@style/actlogg"
                     android:fontFamily="@font/poppins_semibold"
-                    android:textColor="@color/BlckBlue"
+                    android:textColor="@color/WRed"
                     android:layout_gravity="center_horizontal"/>
             </LinearLayout>
         </LinearLayout>

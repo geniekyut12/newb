@@ -15,8 +15,9 @@
         android:id="@+id/afterpre1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_above="@+id/post1done"
         android:layout_marginTop="100dp"
-        android:layout_marginBottom="51dp"
+        android:layout_marginBottom="16dp"
         android:background="@drawable/textbgwhite"
         android:gravity="center_horizontal"
         android:orientation="vertical">
@@ -24,10 +25,11 @@
         <!-- Logo -->
         <ImageView
             android:id="@+id/logo"
-            android:layout_width="212dp"
-            android:layout_height="212dp"
+            android:layout_width="152dp"
+            android:layout_height="152dp"
             android:layout_centerHorizontal="true"
-            app:srcCompat="@drawable/final_logo" />
+            android:layout_marginTop="20sp"
+            app:srcCompat="@drawable/cverdee" />
 
         <!-- Well Done -->
         <TextView
@@ -38,7 +40,7 @@
             android:fontFamily="@font/poppinsregular"
             android:gravity="center"
             android:text="@string/WD"
-            android:textColor="#000000"
+            android:textColor="@color/BlckGreen"
             android:textSize="50sp"
             android:textStyle="bold" />
 
@@ -49,7 +51,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="9dp"
             android:text="@string/pre1scoress"
-            android:textColor="#000000"
+            android:textColor="@color/BlckGreen"
             android:textSize="20sp"
             android:textStyle="bold" />
 
@@ -61,7 +63,7 @@
             android:layout_marginTop="18dp"
             android:gravity="center"
             android:text="@string/pre1score"
-            android:textColor="#4CAF50"
+            android:textColor="@color/RBBG"
             android:textSize="24sp"
             android:textStyle="bold" />
 
@@ -78,7 +80,7 @@
             android:gravity="center"
             android:text="@string/prenote"
             android:textAlignment="center"
-            android:textColor="#000000"
+            android:textColor="@color/BlckGreen"
             android:textSize="22sp" />
     </LinearLayout>
 
@@ -92,10 +94,10 @@
         android:layout_alignParentBottom="true"
         android:layout_marginStart="84dp"
         android:layout_marginBottom="135dp"
-        android:background="@drawable/preassesbtn"
-        android:fontFamily="@font/afacad"
+        style="@style/assessbtn"
+        android:fontFamily="@font/poppinsmedium"
         android:text="@string/next"
-        android:textColor="@color/YGreen"
+        android:textColor="@color/BlckGreen"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

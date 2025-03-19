@@ -15,6 +15,7 @@ public class video1 extends AppCompatActivity {
 
     private VideoView storyVideo;
     private ImageButton closeButton;
+    private ImageButton nextButton; // Changed from Button to ImageButton
     private ProgressBar progressBar;
     private Handler progressHandler = new Handler();
 
@@ -23,46 +24,54 @@ public class video1 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_video1);
 
-        // Initialize the VideoView, close button, and progress bar
+        // Initialize UI elements
         storyVideo = findViewById(R.id.story_video);
         closeButton = findViewById(R.id.close_button);
         progressBar = findViewById(R.id.progress_bar);
+        nextButton = findViewById(R.id.next_button); // This ImageButton should be in your XML layout
 
-        // Load the video from the raw folder (replace 'vid1intro' with your actual file name)
+        // Load the video from the raw folder
         Uri videoUri = Uri.parse("android.resource://" + getPackageName() + "/" + R.raw.vid1intro);
         storyVideo.setVideoURI(videoUri);
 
-        // Set a listener to know when the video is ready to play
+        // Listener for when the video is ready to play (preserving validations)
         storyVideo.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
             @Override
             public void onPrepared(MediaPlayer mediaPlayer) {
-                // Set the progress bar maximum to the video duration
-                progressBar.setMax(storyVideo.getDuration());
-
-                // Start playing the video
+                // Validate video duration is available
+                if (storyVideo.getDuration() > 0) {
+                    progressBar.setMax(storyVideo.getDuration());
+                }
                 storyVideo.start();
-
-                // Begin updating the progress bar
                 updateProgressBar();
             }
         });
 
-        // Set a listener to redirect when the video completes
+        // Redirect to PostAssess1 when the video completes
         storyVideo.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
             @Override
             public void onCompletion(MediaPlayer mp) {
-                // Redirect to PostAssess1 activity after video finishes
                 Intent intent = new Intent(video1.this, PostAssess1.class);
                 startActivity(intent);
-                finish(); // Optional: finish current activity if you don't want users to return here
+                finish(); // Optional: finish the current activity
             }
         });
 
-        // Close the video view when the close button is pressed
+        // Close button action (existing validation remains intact)
         closeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 finish();
+            }
+        });
+
+        // Next ImageButton action to manually redirect to PostAssess1
+        nextButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(video1.this, PostAssess1.class);
+                startActivity(intent);
+                finish(); // Optional: finish current activity if desired
             }
         });
     }
@@ -73,7 +82,6 @@ public class video1 extends AppCompatActivity {
             @Override
             public void run() {
                 if (storyVideo != null && storyVideo.isPlaying()) {
-                    // Update the progress bar to match the current video position
                     progressBar.setProgress(storyVideo.getCurrentPosition());
                     progressHandler.postDelayed(this, 100);
                 }
