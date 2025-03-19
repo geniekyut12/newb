@@ -24,6 +24,19 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/welcome3" />
+
+            <TextView
+                android:id="@+id/popUpText3"
+                android:layout_width="wrap_content"
+                android:layout_height="100sp"
+                android:layout_marginTop="-290sp"
+                android:layout_marginStart="40sp"
+                android:text="@string/diduknow"
+                android:textSize="20sp"
+                android:background="@drawable/bubble1"
+                android:fontFamily="@font/poppinsmedium"
+                android:textColor="@color/BlckYellow"
+                android:textAlignment="center"/>
         </LinearLayout>
 
         <LinearLayout
@@ -76,7 +89,7 @@
             style="@style/popupbtn"
             android:fontFamily="@font/poppinsmedium"
             android:textColor="@color/WBlue"
-            android:textSize="20sp"
+            android:textSize="15sp"
             android:textAlignment="center"
             android:text="@string/back" />
 
@@ -85,6 +98,7 @@
             android:layout_width="120sp"
             android:layout_height="50sp"
             android:layout_marginTop="0dp"
+            android:textSize="15sp"
             style="@style/popupbtn"
             android:fontFamily="@font/poppinsmedium"
             android:text="@string/next" />

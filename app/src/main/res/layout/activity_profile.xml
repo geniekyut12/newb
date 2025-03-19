@@ -79,7 +79,7 @@
         </LinearLayout>
     </LinearLayout>
 
-    <!-- NOTIFICATION, GIFT, SETTINGS ICONS ON RIGHT -->
+    <!-- NOTIFICATION, SETTINGS, SHOP ICONS ON RIGHT -->
     <LinearLayout
         android:id="@+id/iconsOnRightLayout"
         android:layout_width="wrap_content"
@@ -190,7 +190,7 @@
         </FrameLayout>
     </FrameLayout>
 
-    <!-- SCROLLABLE CONTENT (wrapped in ScrollView) -->
+    <!-- SCROLLABLE CONTENT -->
     <ScrollView
         android:id="@+id/scrollViewMainContent"
         android:layout_width="0dp"
@@ -299,91 +299,8 @@
                     </LinearLayout>
                 </HorizontalScrollView>
 
-                <!-- "My Badge" row -->
-                <LinearLayout
-                    android:id="@+id/linearCertsTitle"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_marginTop="15sp"
-                    android:paddingBottom="8dp">
 
-                    <TextView
-                        android:id="@+id/textCert"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="15sp"
-                        android:text="@string/certs"
-                        android:textColor="@android:color/white"
-                        android:textSize="20sp"
-                        android:textStyle="bold" />
-
-                    <View
-                        android:layout_width="0dp"
-                        android:layout_height="1dp"
-                        android:layout_weight="1" />
-
-                    <TextView
-                        android:id="@+id/textSeeAllCert"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="-5sp"
-                        android:layout_marginEnd="25sp"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:fontFamily="@font/poppins_semibold_italic"
-                        android:text="@string/seeAll"
-                        android:textColor="@android:color/white"
-                        android:textSize="20sp" />
-                </LinearLayout>
-
-
-                <!-- Horizontal ScrollView for Badges -->
-                <HorizontalScrollView
-                    android:id="@+id/certificateScrollView"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="8dp"
-                    android:background="@drawable/bgbrown"
-                    android:clipToPadding="false"
-                    android:paddingTop="8dp"
-                    android:paddingBottom="8dp">
-
-                    <LinearLayout
-                        android:id="@+id/linearCertificateContainer"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:orientation="horizontal"
-                        android:paddingLeft="16dp"
-                        android:paddingRight="16dp">
-                        <!-- Example Badges -->
-                        <ImageView
-                            android:layout_width="75dp"
-                            android:layout_height="75dp"
-                            android:layout_marginEnd="16dp"
-                            android:src="@drawable/ecogreen" />
-
-                        <ImageView
-                            android:layout_width="70dp"
-                            android:layout_height="70dp"
-                            android:layout_marginEnd="16dp"
-                            android:src="@drawable/ecoblue" />
-
-                        <ImageView
-                            android:layout_width="70dp"
-                            android:layout_height="70dp"
-                            android:layout_marginEnd="16dp"
-                            android:src="@drawable/ecobrown" />
-
-                        <ImageView
-                            android:layout_width="70dp"
-                            android:layout_height="70dp"
-                            android:layout_marginEnd="16dp"
-                            android:src="@drawable/ecogold" />
-                    </LinearLayout>
-                </HorizontalScrollView>
-
+                <!-- POINTS -->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -462,7 +379,7 @@
                         </LinearLayout>
                     </LinearLayout>
 
-                    <!-- ACTIVITY LOG CONTAINER (brown background + bubble) -->
+                    <!-- ACTIVITY LOG CONTAINER -->
                     <LinearLayout
                         android:id="@+id/activityLogHistoryContainer"
                         android:layout_width="match_parent"
@@ -479,14 +396,13 @@
                             android:layout_gravity="center"
                             android:layout_marginTop="5sp"
                             android:gravity="center"
-                            style="@style/gradientt"
+                            android:background="@drawable/actlogbgg"
                             android:fontFamily="@font/poppins_semibold"
                             android:text="@string/ActLog"
-                            android:textColor="@color/WRed"
+                            android:textColor="@color/BlckYellow"
                             android:textSize="20sp"
                             android:textStyle="bold"
                             android:layout_marginBottom="12dp"/>
-
 
                         <TextView
                             android:id="@+id/actlogtxt"
@@ -499,12 +415,10 @@
                             android:textColor="@color/WRed"
                             android:textSize="15sp"
                             android:layout_marginBottom="12dp"/>
-
                     </LinearLayout>
-
                 </LinearLayout>
 
-                <!-- Selected Character Section (NO Shop button) -->
+                <!-- Selected Character Section -->
                 <LinearLayout
                     android:id="@+id/selectedCharacterContainer"
                     android:layout_width="match_parent"
@@ -554,25 +468,193 @@
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
                         android:clipToPadding="false" />
-
                 </LinearLayout>
 
-                <!-- Bottom Button inside ScrollView -->
+                <!-- RadioGroup for Weekly/Monthly toggle -->
+                <RadioGroup
+                    android:id="@+id/radioGroupTimeRange"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:layout_gravity="center_horizontal">
+
+                    <RadioButton
+                        android:id="@+id/radioWeekly"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Weekly"
+                        android:checked="true"
+                        android:textColor="@android:color/white"/>
+
+                    <RadioButton
+                        android:id="@+id/radioMonthly"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Monthly"
+                        android:textColor="@android:color/white"/>
+                </RadioGroup>
+
+                <!-- BarChart for tracking data -->
+                <com.github.mikephil.charting.charts.BarChart
+                    android:id="@+id/barChart"
+                    android:layout_width="match_parent"
+                    android:layout_height="250dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="16dp"/>
+
+                <!-- TOWER SECTION -->
+                <FrameLayout
+                    android:id="@+id/towerContainer"
+                    android:layout_width="match_parent"
+                    android:layout_height="600dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="16dp"
+                    android:clipToPadding="false"
+                    android:gravity="center">
+
+                    <!-- 1) The main tower body -->
+                    <ImageView
+                        android:id="@+id/imageTower"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:adjustViewBounds="true"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/tower_circle" />
+
+
+                    <!-- 3) Current step count (inside the orb) -->
+                    <TextView
+                        android:id="@+id/textTowerSteps"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="top|center_horizontal"
+                        android:layout_marginTop="35dp"
+                        android:text="0"
+                        android:textColor="@android:color/white"
+                        android:textSize="28sp"
+                        android:textStyle="bold" />
+
+                    <!-- 4) Milestones: from lowest (bottom) to highest (top).
+                         Each uses layout_gravity="top|center_horizontal" but
+                         the marginTop is set so that 50 is near bottom,
+                         10,000 is near the top.
+                         Tweak the dp values as needed. -->
+
+                    <!-- 50 (lowest) near bottom -->
+                    <TextView
+                        android:id="@+id/textMilestone50"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="top|center_horizontal"
+                        android:layout_marginTop="520dp"
+                        android:text="50"
+                        android:textColor="@android:color/white"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <!-- 200 a bit above 50 -->
+                    <TextView
+                        android:id="@+id/textMilestone200"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="top|center_horizontal"
+                        android:layout_marginTop="460dp"
+                        android:text="200"
+                        android:textColor="@android:color/white"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <!-- 500 above 200 -->
+                    <TextView
+                        android:id="@+id/textMilestone500"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="top|center_horizontal"
+                        android:layout_marginTop="400dp"
+                        android:text="500"
+                        android:textColor="@android:color/white"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <!-- 1,000 above 500 -->
+                    <TextView
+                        android:id="@+id/textMilestone1000"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="top|center_horizontal"
+                        android:layout_marginTop="340dp"
+                        android:text="1,000"
+                        android:textColor="@android:color/white"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <!-- 3,000 -->
+                    <TextView
+                        android:id="@+id/textMilestone3000"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="top|center_horizontal"
+                        android:layout_marginTop="280dp"
+                        android:text="3,000"
+                        android:textColor="@android:color/white"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <!-- 5,000 -->
+                    <TextView
+                        android:id="@+id/textMilestone5000"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="top|center_horizontal"
+                        android:layout_marginTop="220dp"
+                        android:text="5,000"
+                        android:textColor="@android:color/white"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+                    <!-- 10,000 (highest) near the top -->
+                    <TextView
+                        android:id="@+id/textMilestone10000"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="top|center_horizontal"
+                        android:layout_marginTop="160dp"
+                        android:text="10,000"
+                        android:textColor="@android:color/white"
+                        android:textSize="24sp"
+                        android:textStyle="bold" />
+
+                    <!-- 5) "Fit Tower" label near bottom -->
+                    <TextView
+                        android:id="@+id/textFitTower"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="bottom|center_horizontal"
+                        android:layout_marginBottom="20dp"
+                        android:text="Fit Tower"
+                        android:textColor="@android:color/white"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+                </FrameLayout>
+
+
+                <!-- Bottom Button -->
                 <Button
                     android:id="@+id/bottomButton"
                     android:layout_width="200sp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5sp"
-                    android:layout_marginBottom="15sp"
+                    android:layout_marginBottom="15dp"
                     android:text="@string/selectChar"
                     android:background="@drawable/btnblue"
                     android:fontFamily="@font/poppins_semibold"
                     android:textColor="@color/BlckBlue"
                     android:layout_gravity="center_horizontal"/>
-
             </LinearLayout>
-
         </LinearLayout>
     </ScrollView>
-
 </androidx.constraintlayout.widget.ConstraintLayout>

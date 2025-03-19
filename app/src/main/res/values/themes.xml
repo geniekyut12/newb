@@ -12,4 +12,19 @@
         <item name="android:buttonStyle">@style/CustomButtonStyle</item>
     </style>
 
+
+
+    <style name="Theme.CVERDETOTO1" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <!-- Replace with your desired colors -->
+        <item name="colorPrimary">@color/LBrown</item>
+        <item name="colorPrimaryVariant">@color/LBrown</item>
+        <item name="colorOnPrimary">@android:color/white</item>
+
+        <item name="colorSecondary">@color/Green</item>
+        <item name="colorSecondaryVariant">@color/DarkG</item>
+        <item name="colorOnSecondary">@android:color/white</item>
+
+        <!-- If using Material 3, you might see colorScheme.* items instead -->
+    </style>
+
 </resources>

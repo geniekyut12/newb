@@ -2,25 +2,42 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/loadingbg">
+    android:layout_height="match_parent">
 
+    <!-- Full-screen VideoView for background video -->
+    <VideoView
+        android:id="@+id/videoViewBackground"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true" />
 
     <!-- Get Started Button -->
+
     <Button
         android:id="@+id/getstartbtn"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
+        android:layout_marginEnd="0dp"
         android:layout_marginBottom="14dp"
         android:background="@android:color/transparent"
         android:fontFamily="@font/afacad"
-        android:text="@string/getstartbtn"
+        android:text="@string/pic"
         android:textAllCaps="false"
-        android:textColor="#E9E5D6"
-        android:textSize="22sp" />
+        />
 
-    <!-- Logo Image -->
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="152dp"
+        android:layout_height="152dp"
+        android:layout_centerInParent="true"
+        android:translationY="-20dp"
+        android:src="@drawable/cverdetotoo"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -28,8 +45,8 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
         android:layout_centerInParent="true"
-        android:layout_marginStart="100dp"
-        android:layout_marginBottom="97dp"
+        android:layout_marginStart="106dp"
+        android:layout_marginBottom="127dp"
         android:fontFamily="@font/afacad"
         android:text="@string/getstart"
         android:textColor="#E9E5D6"

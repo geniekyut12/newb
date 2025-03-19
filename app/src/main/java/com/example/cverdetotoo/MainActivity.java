@@ -3,8 +3,10 @@ package com.example.cverdetotoo;
 import android.app.NotificationManager;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.VideoView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.NotificationManagerCompat;
@@ -67,24 +69,35 @@ public class MainActivity extends AppCompatActivity {
             Intent intent = new Intent(MainActivity.this, Signin.class);
             startActivity(intent);
         });
+
+
+        // Initialize and set up VideoView
+        VideoView videoView = findViewById(R.id.videoViewBackground);
+        Uri uri = Uri.parse("android.resource://" + getPackageName() + "/" + R.raw.mbg);
+        videoView.setVideoURI(uri);
+        videoView.setOnPreparedListener(mp -> {
+            mp.setLooping(true);
+            videoView.start();
+        });
+
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-        isForeground = true;
+        @Override
+        protected void onResume () {
+            super.onResume();
+            isForeground = true;
 
-        // Cancel any notifications when the user returns to the app
-        NotificationManagerCompat notificationManager = NotificationManagerCompat.from(this);
-        notificationManager.cancelAll();
+            // Cancel any notifications when the user returns to the app
+            NotificationManagerCompat notificationManager = NotificationManagerCompat.from(this);
+            notificationManager.cancelAll();
+        }
+
+        @Override
+        protected void onPause () {
+            super.onPause();
+            isForeground = false;
+
+            // Record the time when the user leaves the app
+            lastBackgroundTime = System.currentTimeMillis();
+        }
     }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        isForeground = false;
-
-        // Record the time when the user leaves the app
-        lastBackgroundTime = System.currentTimeMillis();
-    }
-}

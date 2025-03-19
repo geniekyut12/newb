@@ -1,6 +1,7 @@
 <shape xmlns:android="http://schemas.android.com/apk/res/android"
     android:shape="rectangle">
-    <!-- Red background for rank 5 -->
-    <solid android:color="#5931F6" />
+    <!-- Green background for rank 4 -->
+    <solid android:color="#C2A017" />
     <corners android:radius="16dp"/>
+    <stroke android:color="#C9A307" android:width="1dp"/>
 </shape>

@@ -6,12 +6,12 @@ plugins {
 
 android {
     namespace = "com.example.cverdetotoo"
-    compileSdk = 35
+    compileSdk = 35 // Upgraded to API Level 35
 
     defaultConfig {
         applicationId = "com.example.cverdetotoo"
         minSdk = 26
-        targetSdk = 34
+        targetSdk = 34 // Ensure migration for Android 15 changes
         versionCode = 1
         versionName = "1.0"
 
@@ -41,7 +41,7 @@ android {
 }
 
 dependencies {
-    // Core dependencies
+    // Core Android dependencies
     implementation(libs.appcompat)
     implementation(libs.material)
     implementation(libs.activity)
@@ -57,15 +57,15 @@ dependencies {
     implementation("com.google.firebase:firebase-messaging")
     implementation("com.google.firebase:firebase-storage")
 
-    //Gson
-    implementation ("com.google.code.gson:gson:2.8.9")
+    // Gson for JSON parsing
+    implementation("com.google.code.gson:gson:2.8.9")
 
-    // Play Services
+    // Google Play Services
     implementation("com.google.android.gms:play-services-auth:21.2.0")
     implementation("com.google.android.gms:play-services-location:21.3.0")
     implementation(libs.play.services.location)
 
-    // ML Kit
+    // ML Kit for image processing
     implementation(libs.vision.common)
     implementation(libs.image.labeling.common)
     implementation(libs.image.labeling.default.common)
@@ -75,34 +75,38 @@ dependencies {
     implementation("com.google.zxing:core:3.5.1")
     implementation("com.journeyapps:zxing-android-embedded:4.3.0")
 
-    // JavaMail API for email sending
+    // JavaMail API for sending emails
     implementation("com.sun.mail:android-mail:1.6.7")
     implementation("com.sun.mail:android-activation:1.6.7")
 
-    // Charting Library
+    // MPAndroidChart for chart visualization
     implementation("com.github.PhilJay:MPAndroidChart:3.1.0")
     implementation(libs.navigation.fragment)
 
     // WorkManager for background notifications
     implementation("androidx.work:work-runtime:2.8.1")
 
-    // OSMDroid dependency
+    // OSMDroid for OpenStreetMap support
     implementation(libs.osmdroid.android)
 
-    // Guava dependency for ListenableFuture
+    // Guava for ListenableFuture
     implementation("com.google.guava:guava:31.1-android")
-    implementation(project(":sdk123"))
+
+    // TensorFlow Lite for AI/ML models
+    implementation("org.tensorflow:tensorflow-lite:2.11.0")
+    implementation("org.tensorflow:tensorflow-lite-support:0.4.0")
+
+    // Lottie for animations
+    implementation("com.airbnb.android:lottie:5.2.0")
+
+    //pdf cert
+    implementation("com.itextpdf:itext7-core:7.2.3")
+
+    // Local SDK module (ensure it's correctly configured)
     implementation(project(":sdk123"))
 
     // Testing dependencies
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
-
-    //tensorflow lite
-    implementation("org.tensorflow:tensorflow-lite:2.11.0")
-    implementation("org.tensorflow:tensorflow-lite-support:0.4.0")
-    implementation ("com.airbnb.android:lottie:5.2.0")
-
-    // Use the local OpenCV SDK module (imported as :sdk)
 }

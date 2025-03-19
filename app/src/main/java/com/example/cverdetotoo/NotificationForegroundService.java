@@ -25,7 +25,7 @@ public class NotificationForegroundService extends Service {
     private static final String CHANNEL_ID = "foreground_channel";
     private static final int FOREGROUND_NOTIFICATION_ID = 1000;
     // The interval for checking whether to post a notification (2 minutes).
-    private static final long INTERVAL_MS = TimeUnit.HOURS.toMillis(4);
+    private static final long INTERVAL_MS = TimeUnit.MINUTES.toMillis(10);
 
     private Handler handler;
     private Runnable notificationRunnable;
@@ -113,7 +113,7 @@ public class NotificationForegroundService extends Service {
         NotificationCompat.Builder builder = new NotificationCompat.Builder(this, CHANNEL_ID)
                 .setSmallIcon(R.drawable.ic_notification)
                 .setContentTitle("C-Verde")
-                .setContentText("Let's reduce our carbon emissions!")
+                .setContentText("Small Steps, Big Impact")
                 .setPriority(NotificationCompat.PRIORITY_MIN)
                 .setCategory(NotificationCompat.CATEGORY_SERVICE)
                 .setContentIntent(pendingIntent)

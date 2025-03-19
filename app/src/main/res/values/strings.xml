@@ -5,7 +5,7 @@
     <string name="Email_Uname">Email/Username</string>
     <string name="getstart">Click anywhere to start!</string>
     <string name="Password">Password</string>
-    <string name="forgotpassword"><u>Forgot Password?</u></string>
+    <string name="forgotpassword">Forgot Password</string>
     <string name="login">Login</string>
     <string name="reg">New to C-Verde? SignUp</string>
     <string name="logo">\n</string>
@@ -139,7 +139,7 @@
     strings.xml
     <string name="channel_name">Motivational Notifications</string>
     <string name="channel_description">Channel for motivational notifications and facts</string>
-    <string name="hey">Hey There!\nLet me show you around!♡</string>
+    <string name="hey">Hey There! I am Ceven, Let me show you around!♡</string>
     <string name="diduknow">\nDid you know?</string>
     <string name="welcome2"><b><u>Everything we do leaves a carbon footprint</u></b> — sending an email, eating a meal, or streaming a video all contribute to CO₂ emissions. Even a single cheeseburger can produce CO₂!</string>
     <string name="back">BACK</string>
@@ -238,6 +238,7 @@
     <string name="today">TODAY</string>
     <string name="register">REGISTER</string>
     <string name="certs">Certificates</string>
+    <string name="foood">Our food is very important</string>
 
 
 </resources>

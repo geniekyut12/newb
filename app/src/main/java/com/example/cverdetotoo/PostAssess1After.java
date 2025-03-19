@@ -59,6 +59,21 @@ public class PostAssess1After extends AppCompatActivity {
             markPreAssessmentCompleted(); // Mark assessment as completed in Firestore
             navigateToNavbar(score, resultMessage);
         });
+
+        btnq1done.setOnClickListener(v -> {
+            markPreAssessmentCompleted(); // Mark assessment as completed in Firestore
+
+            if (score >= 4) {
+                // If user passes, go to CertificateActivity
+                Intent intent = new Intent(PostAssess1After.this, CertificateActivity.class);
+                intent.putExtra("username", auth.getCurrentUser().getDisplayName());
+                startActivity(intent);
+            } else {
+                // If failed, go to the navbar
+                navigateToNavbar(score, resultMessage);
+            }
+        });
+
     }
 
     private void saveScoreToFirestore(int score, String result) {
@@ -102,5 +117,9 @@ public class PostAssess1After extends AppCompatActivity {
                     .addOnFailureListener(e ->
                             Toast.makeText(PostAssess1After.this, "Failed to update completion status", Toast.LENGTH_SHORT).show());
         }
+
+
     }
+
+
 }

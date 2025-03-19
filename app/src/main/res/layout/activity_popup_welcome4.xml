@@ -21,6 +21,21 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/welcome4" />
+
+        <!-- Text bubble -->
+        <TextView
+            android:id="@+id/popUpText"
+            android:layout_width="150sp"
+            android:layout_height="80sp"
+            android:layout_marginTop="-262dp"
+            android:layout_marginEnd="50sp"
+            android:text="@string/foood"
+            android:textSize="16sp"
+            android:fontFamily="@font/poppinsmedium"
+            android:textAlignment="center"
+            android:background="@drawable/bubble"
+            android:padding="8dp"
+            android:textColor="@color/BlckYellow" />
     </LinearLayout>
 
     <LinearLayout

@@ -33,9 +33,9 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
-import java.util.HashMap;
 import java.util.List;
 
 public class TrackingService extends Service implements LocationListener {
@@ -261,7 +261,6 @@ public class TrackingService extends Service implements LocationListener {
             notificationBuilder.setCustomContentView(notificationLayout);
             startForeground(NOTIFICATION_ID, notificationBuilder.build());
 
-            // Broadcast update to UI
             Intent updateIntent = new Intent("com.example.walktracker.TRACKING_UPDATE");
             updateIntent.putExtra("elapsedTime", elapsedTime);
             updateIntent.putExtra("totalDistance", totalDistance);
@@ -297,14 +296,10 @@ public class TrackingService extends Service implements LocationListener {
             }
             double co2Saved = distanceKm * emissionFactor;
 
-            String co2ComparisonBus = "CO₂ saved from walk compared to bus: " +
-                    String.format("%.2fkg", distanceKm * 0.08);
-            String co2ComparisonJeepney = "CO₂ saved from walk compared to Jeepney: " +
-                    String.format("%.2fkg", distanceKm * 0.15);
-            String co2ComparisonMotorcycle = "CO₂ saved from walk compared to Motorcycle: " +
-                    String.format("%.2fkg", distanceKm * 0.10);
-            String co2ComparisonTruck = "CO₂ saved from walk compared to Truck: " +
-                    String.format("%.2fkg", distanceKm * 0.30);
+            String co2ComparisonBus = "CO₂ saved from walk compared to bus: " + String.format("%.2fkg", distanceKm * 0.08);
+            String co2ComparisonJeepney = "CO₂ saved from walk compared to Jeepney: " + String.format("%.2fkg", distanceKm * 0.15);
+            String co2ComparisonMotorcycle = "CO₂ saved from walk compared to Motorcycle: " + String.format("%.2fkg", distanceKm * 0.10);
+            String co2ComparisonTruck = "CO₂ saved from walk compared to Truck: " + String.format("%.2fkg", distanceKm * 0.30);
 
             Map<String, Object> partialData = new HashMap<>();
             partialData.put("distanceSoFarKm", String.format(Locale.getDefault(), "%.2f", distanceKm));
@@ -431,10 +426,6 @@ public class TrackingService extends Service implements LocationListener {
         }
     }
 
-    /**
-     * Checks if the goal is reached; if so, stores the final record and awards coins.
-     * This method is called every second from the notification updater.
-     */
     private void storeTrackingRecordIfGoalReached() {
         try {
             if (isRewardGiven) return;
@@ -477,14 +468,10 @@ public class TrackingService extends Service implements LocationListener {
             }
             double currentCo2Saved = distanceKm * emissionFactor;
 
-            String co2ComparisonBus = "CO₂ saved from walk compared to bus: " +
-                    String.format("%.2fkg", distanceKm * 0.08);
-            String co2ComparisonJeepney = "CO₂ saved from walk compared to Jeepney: " +
-                    String.format("%.2fkg", distanceKm * 0.15);
-            String co2ComparisonMotorcycle = "CO₂ saved from walk compared to Motorcycle: " +
-                    String.format("%.2fkg", distanceKm * 0.10);
-            String co2ComparisonTruck = "CO₂ saved from walk compared to Truck: " +
-                    String.format("%.2fkg", distanceKm * 0.30);
+            String co2ComparisonBus = "CO₂ saved from walk compared to bus: " + String.format("%.2fkg", distanceKm * 0.08);
+            String co2ComparisonJeepney = "CO₂ saved from walk compared to Jeepney: " + String.format("%.2fkg", distanceKm * 0.15);
+            String co2ComparisonMotorcycle = "CO₂ saved from walk compared to Motorcycle: " + String.format("%.2fkg", distanceKm * 0.10);
+            String co2ComparisonTruck = "CO₂ saved from walk compared to Truck: " + String.format("%.2fkg", distanceKm * 0.30);
 
             Map<String, Object> data = new HashMap<>();
             data.put("distanceSoFarKm", distanceString);
@@ -506,9 +493,7 @@ public class TrackingService extends Service implements LocationListener {
                     .document(currentSessionId)
                     .set(data, SetOptions.merge())
                     .addOnSuccessListener(aVoid -> {
-                        // Award coins in the service as well.
                         updateUserCoinsInService(100);
-                        // Optionally, update highScore in the parent doc.
                         db.collection("Games")
                                 .document(displayName)
                                 .update("highScore", FieldValue.increment(pointsEarned));

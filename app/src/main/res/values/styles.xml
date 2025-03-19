@@ -51,6 +51,15 @@
         <item name="backgroundTint">@null</item>
     </style>
 
+    <style name="CustomButtonStyle">
+        <item name="android:background">@drawable/btnbg23</item>
+        <item name="android:textColor">@color/LBrown</item>
+    </style>
+
+    <style name="walangdes">
+        <item name="android:background">@drawable/btngetstart</item>
+    </style>
+
 
 
 </resources>
