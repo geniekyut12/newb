@@ -1,3 +1,3 @@
-ninja: Entering directory `D:\New folder\ketTres123\sdk123\.cxx\Debug\ta1t5v5t\arm64-v8a'
+ninja: Entering directory `D:\New folder\ketTres123\sdk123\.cxx\Debug\ta1t5v5t\x86'
 [1/2] Building CXX object CMakeFiles/opencv_jni_shared.dir/dummy.cpp.o
 [2/2] Linking CXX static library libopencv_jni_shared.a
