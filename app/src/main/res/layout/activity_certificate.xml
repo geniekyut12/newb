@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:padding="16dp"
+    android:background="@drawable/homeblue">
+
+    <!-- Certificate Display -->
+    <ImageView
+        android:id="@+id/certificateView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:scaleType="fitCenter"
+        android:contentDescription="@string/pic" />
+
+    <!-- Buttons Layout -->
+    <LinearLayout
+        android:id="@+id/buttons1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginBottom="25sp"
+        android:gravity="center"
+        android:padding="16dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/certsInst"
+            android:textColor="@color/WBlue"
+            android:fontFamily="@font/poppins_italic"
+            android:textAlignment="center"
+            android:layout_marginBottom="25sp"/>
+
+        <!-- Download/Save Button -->
+
+        <Button
+            android:id="@+id/btnDownloadPDF"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="25sp"
+            android:lines="1"
+            android:textColor="@color/BlckBlue"
+            style="@style/assessbtn3"
+            android:text="@string/dlcert1"/>
+
+        <Button
+            android:id="@+id/btnDownloadCertificate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/WBlue"
+            style="@style/gradientt"
+            android:text="@string/dlcert"/>
+
+    </LinearLayout>
+
+</LinearLayout>

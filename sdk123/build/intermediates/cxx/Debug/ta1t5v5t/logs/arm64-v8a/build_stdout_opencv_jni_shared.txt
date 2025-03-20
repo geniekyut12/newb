@@ -1,0 +1,2 @@
+ninja: Entering directory `D:\New folder\ketTres123\sdk123\.cxx\Debug\ta1t5v5t\arm64-v8a'
+ninja: no work to do.

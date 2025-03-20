@@ -1,0 +1,17 @@
+{
+  "installationFolder": "D:\\New folder\\ketTres123\\sdk123\\build\\intermediates\\prefab_package\\release\\prefab",
+  "gradlePath": ":sdk123",
+  "packageInfo": {
+    "packageName": "sdk123",
+    "packageSchemaVersion": 2,
+    "packageDependencies": [],
+    "modules": [
+      {
+        "moduleName": "opencv_jni_shared",
+        "moduleHeaders": "D:\\New folder\\ketTres123\\sdk123\\native\\jni\\include",
+        "moduleExportLibraries": [],
+        "abis": []
+      }
+    ]
+  }
+}

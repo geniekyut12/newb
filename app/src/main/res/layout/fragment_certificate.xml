@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/activity_log_background"
+    tools:context=".certificateFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center_horizontal">
+
+        <!-- Title -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50sp"
+            android:text="@string/certs"
+            android:textAllCaps="true"
+            android:textSize="40sp"
+            android:fontFamily="@font/poppins_bold"
+            android:textColor="@color/WBlue" />
+
+        <!-- First Certificate -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center_horizontal">
+
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="300sp"
+                android:layout_height="220sp"
+                android:layout_marginTop="90sp"
+                android:src="@drawable/cert1" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15sp"
+                android:text="@string/cert1"
+                android:textSize="20sp"
+                android:fontFamily="@font/poppinsmedium"
+                android:textColor="@color/WBlue" />
+
+            <TextView
+                android:layout_width="300sp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10sp"
+                android:text="@string/cert1desc"
+                android:textSize="15sp"
+                android:textAlignment="center"
+                android:fontFamily="@font/poppinsregular"
+                android:textColor="@color/WBlue" />
+        </LinearLayout>
+
+        <!-- Divider -->
+        <View
+            android:layout_width="350sp"
+            android:layout_height="1dp"
+            android:layout_gravity="center"
+            android:background="@android:color/darker_gray"
+            android:layout_marginTop="66dp"
+            android:layout_marginBottom="66dp" />
+
+        <!-- Certificate Video 1 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center_horizontal">
+
+            <ImageView
+                android:id="@+id/certvid1"
+                android:layout_width="300sp"
+                android:layout_height="220sp"
+                android:layout_marginTop="10sp"
+                android:src="@drawable/cert2" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15sp"
+                android:text="@string/cert2"
+                android:textSize="20sp"
+                android:fontFamily="@font/poppinsmedium"
+                android:textColor="@color/WBlue" />
+
+            <TextView
+                android:layout_width="300sp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10sp"
+                android:text="@string/cert2desc"
+                android:textSize="15sp"
+                android:textAlignment="center"
+                android:fontFamily="@font/poppinsregular"
+                android:textColor="@color/WBlue" />
+        </LinearLayout>
+
+        <!-- Divider2 -->
+        <View
+            android:layout_width="350sp"
+            android:layout_height="1dp"
+            android:layout_gravity="center"
+            android:background="@android:color/darker_gray"
+            android:layout_marginTop="66dp"
+            android:layout_marginBottom="66dp" />
+
+        <!-- Certificate Video 2 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center_horizontal">
+
+            <ImageView
+                android:id="@+id/certvid2"
+                android:layout_width="300sp"
+                android:layout_height="220sp"
+                android:layout_marginTop="10sp"
+                android:src="@drawable/cert3" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15sp"
+                android:text="@string/cert2"
+                android:textSize="20sp"
+                android:fontFamily="@font/poppinsmedium"
+                android:textColor="@color/WBlue" />
+
+            <TextView
+                android:layout_width="300sp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10sp"
+                android:text="@string/cert2desc"
+                android:textSize="15sp"
+                android:textAlignment="center"
+                android:fontFamily="@font/poppinsregular"
+                android:textColor="@color/WBlue" />
+        </LinearLayout>
+
+
+    </LinearLayout>
+</ScrollView>
