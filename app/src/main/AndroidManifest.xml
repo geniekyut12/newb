@@ -33,9 +33,7 @@
         <activity
             android:name=".CertificateActivity"
             android:exported="false" />
-        <activity
-            android:name=".certificategen"
-            android:exported="false" />
+
         <activity
             android:name=".PostAssess2After"
             android:exported="false" />
@@ -181,9 +179,7 @@
         <activity
             android:name=".navbar"
             android:exported="false" />
-        <activity
-            android:name=".gawanicabs"
-            android:exported="false" />
+
         <activity
             android:name=".Loadingpage"
             android:exported="false" />
@@ -193,9 +189,7 @@
         <activity
             android:name=".Signin"
             android:exported="false" />
-        <activity
-            android:name=".ActivityLogFragment"
-            android:exported="false" />
+
         <activity
             android:name=".AboutUs"
             android:exported="false" />

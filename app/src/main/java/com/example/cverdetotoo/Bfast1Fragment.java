@@ -79,7 +79,7 @@ public class Bfast1Fragment extends AppCompatActivity {
     private static final int MODEL_PIXEL_SIZE = 3;    // RGB
     private static final int BYTES_PER_CHANNEL = 4;   // float32
     // Number of classes in your model
-    private static final int MODEL_OUTPUT_CLASSES = 56;
+    private static final int MODEL_OUTPUT_CLASSES = 55;
 
     private ActivityResultLauncher<Intent> cameraLauncher;
     private ActivityResultLauncher<String> galleryLauncher;

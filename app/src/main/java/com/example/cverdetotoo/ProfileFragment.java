@@ -114,11 +114,15 @@ public class ProfileFragment extends Fragment {
                     .addToBackStack(null) // Allows user to navigate back
                     .commit();
         });
-            TextView textCert = view.findViewById(R.id.textCertSeeAll);
-            textCert.setOnClickListener(v -> {
-                Intent intent = new Intent(getActivity(), CertificateActivity.class);
-                startActivity(intent);
-            });
+        TextView TextCert = view.findViewById(R.id.textCertSeeAll);
+        TextCert.setOnClickListener(v -> {
+            Fragment CerficateFragment = new certificateFragment();
+            requireActivity().getSupportFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.fragment_container, CerficateFragment) // Ensure this is the correct ID
+                    .addToBackStack(null) // Allows user to navigate back
+                    .commit();
+        });
 
 
         TextView textGreeting = view.findViewById(R.id.textGreeting);

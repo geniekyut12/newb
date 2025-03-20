@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.HashMap;
@@ -19,17 +20,17 @@ import java.util.Map;
 public class PostAssess1After extends AppCompatActivity {
 
     private Button btnq1done;
-    private TextView scoreTextView, resultTextView, wtgm1TextView; // Added wtgm1TextView for motivational message
+    private TextView scoreTextView, resultTextView, wtgm1TextView; // wtgm1TextView for motivational message
     private FirebaseFirestore db;
     private FirebaseAuth auth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        // Remove the action bar (header)
         if (getSupportActionBar() != null) {
             getSupportActionBar().hide();
         }
-
         FirebaseApp.initializeApp(this);
         setContentView(R.layout.activity_post_assess1_after);
 
@@ -38,14 +39,14 @@ public class PostAssess1After extends AppCompatActivity {
 
         btnq1done = findViewById(R.id.post1done);
         scoreTextView = findViewById(R.id.post1score);
-        resultTextView = findViewById(R.id.wtg);       // This TextView displays the result message ("Well Done!" or "Failed")
-        wtgm1TextView = findViewById(R.id.wtgm1);        // This TextView will display the motivational message if needed
+        resultTextView = findViewById(R.id.wtg);       // Displays the result message ("Well Done!" or "Failed")
+        wtgm1TextView = findViewById(R.id.wtgm1);        // Displays a motivational message if needed
 
-        int score = getIntent().getIntExtra("score", 0);
+        // Declare variables as final so they can be used inside lambdas
+        final int score = getIntent().getIntExtra("score", 0);
         scoreTextView.setText(String.valueOf(score));
 
-        // Determine the result message based on the score
-        String resultMessage = (score >= 4) ? "Well Done!" : "Failed";
+        final String resultMessage = (score >= 4) ? "Well Done!" : "Failed";
         resultTextView.setText(resultMessage);
 
         // If the user failed, update wtgm1TextView with a motivational message
@@ -53,23 +54,44 @@ public class PostAssess1After extends AppCompatActivity {
             wtgm1TextView.setText("Don't worry! Every step toward learning about the environment makes a difference. Keep going, and you'll get there! Click 'Next' to watch an educational video and discover simple ways to reduce your carbon footprint.");
         }
 
+        // Save the score data to Firestore regardless of pass or fail
         saveScoreToFirestore(score, resultMessage);
 
-        btnq1done.setOnClickListener(v -> {
-            markPreAssessmentCompleted(); // Mark assessment as completed in Firestore
-            navigateToNavbar(score, resultMessage);
-        });
-
+        // Combined onClick listener
+        // Combined onClick listener
         btnq1done.setOnClickListener(v -> {
             markPreAssessmentCompleted(); // Mark assessment as completed in Firestore
 
             if (score >= 4) {
-                // If user passes, go to CertificateActivity
-                Intent intent = new Intent(PostAssess1After.this, CertificateActivity.class);
-                intent.putExtra("username", auth.getCurrentUser().getDisplayName());
-                startActivity(intent);
+                // Create a final variable for the username to use inside the lambda
+                final String usernameFinal = (auth.getCurrentUser() != null &&
+                        auth.getCurrentUser().getDisplayName() != null &&
+                        !auth.getCurrentUser().getDisplayName().isEmpty())
+                        ? auth.getCurrentUser().getDisplayName()
+                        : auth.getCurrentUser().getUid();
+
+                db.collection("certificate").document(usernameFinal)
+                        .get()
+                        .addOnSuccessListener(documentSnapshot -> {
+                            if (documentSnapshot.exists()) {
+                                // Certificate already exists; redirect to navbar
+                                Toast.makeText(PostAssess1After.this, "Certificate already received", Toast.LENGTH_SHORT).show();
+                                navigateToNavbar(score, resultMessage);
+                            } else {
+                                // Certificate not received; go to CertificateActivity to show/generate it
+                                Intent intent = new Intent(PostAssess1After.this, CertificateActivity.class);
+                                intent.putExtra("username", usernameFinal);
+                                startActivity(intent);
+                                finish();
+                            }
+                        })
+                        .addOnFailureListener(e -> {
+                            // In case of error, default to navbar
+                            Toast.makeText(PostAssess1After.this, "Error checking certificate, redirecting...", Toast.LENGTH_SHORT).show();
+                            navigateToNavbar(score, resultMessage);
+                        });
             } else {
-                // If failed, go to the navbar
+                // If failed, go directly to the navbar
                 navigateToNavbar(score, resultMessage);
             }
         });
@@ -117,9 +139,5 @@ public class PostAssess1After extends AppCompatActivity {
                     .addOnFailureListener(e ->
                             Toast.makeText(PostAssess1After.this, "Failed to update completion status", Toast.LENGTH_SHORT).show());
         }
-
-
     }
-
-
 }

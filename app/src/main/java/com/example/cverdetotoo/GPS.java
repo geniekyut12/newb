@@ -577,6 +577,11 @@ public class GPS extends AppCompatActivity implements LocationListener {
                 showBadgePopup();
                 isBadgePopupShown = true;
             }
+
+            Intent intent = new Intent(GPS.this, CertificateActivityGPS.class);
+            startActivity(intent);
+            finish();  // Optionally finish the current activity so that the user cannot go back to it.
+
         } catch (Exception e) {
             Log.e(TAG, "Error updating stats: " + e.getMessage());
         }

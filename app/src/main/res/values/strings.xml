@@ -265,6 +265,10 @@
     <string name="postQ25c">Conventional</string>
     <string name="postQ25b">Non-renewable</string>
     <string name="postQ25a">Renewable</string>
+    <string name="cert1">Certificate of Appreciation</string>
+    <string name="cert1desc">You are eligible to claim this certificate upon successfully completing all the videos and challenges provided.</string>
+    <string name="cert2">Certificate of Participation</string>
+    <string name="cert2desc">This certificate can be claimed upon successfully passing the post-assessment test.</string>
 
 
 </resources>
