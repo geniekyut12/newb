@@ -51,7 +51,7 @@ public class PostAssess1After extends AppCompatActivity {
 
         // If the user failed, update wtgm1TextView with a motivational message
         if (resultMessage.equals("Failed")) {
-            wtgm1TextView.setText("Don't worry! Every step toward learning about the environment makes a difference. Keep going, and you'll get there! Click 'Next' to watch an educational video and discover simple ways to reduce your carbon footprint.");
+            wtgm1TextView.setText("Don't worry! Learning takes time. Review, try again, and keep going.");
         }
 
         // Save the score data to Firestore regardless of pass or fail

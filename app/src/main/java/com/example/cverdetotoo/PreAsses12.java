@@ -145,7 +145,7 @@ public class PreAsses12 extends AppCompatActivity {
                 // Define a custom dark green color (20% darker than bright green)
                 int darkGreen = 0xFF00CC00;
 
-            // Highlight the correct answer in dark green
+                // Highlight the correct answer in dark green
                 RadioButton correctRadioButton = findViewById(correctAnswerId);
                 correctRadioButton.setTextColor(darkGreen);
                 correctRadioButton.setButtonTintList(ColorStateList.valueOf(darkGreen));

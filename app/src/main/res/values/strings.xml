@@ -34,7 +34,7 @@
     <string name="WD">Well Done!</string>
     <string name="pre1scoress">Your score is:</string>
     <string name="pre1score">5/5 points</string>
-    <string name="prenote">Great job!  Your responses show you\'re beginning to understand how everyday choices affect our environment. Now, click \'Next\' to watch the following educational video and discover more strategies for reducing your carbon footprint.</string>
+    <string name="prenote">Great job! Keep applying what you’ve learned for a better future.</string>
     <string name="whatiscarbon">What is Carbon Footprint?</string>
     <string name="effectcarbon">Effects of Carbon Footprint</string>
 
@@ -269,6 +269,15 @@
     <string name="cert1desc">You are eligible to claim this certificate upon successfully completing all the videos and challenges provided.</string>
     <string name="cert2">Certificate of Participation</string>
     <string name="cert2desc">This certificate can be claimed upon successfully passing the post-assessment test.</string>
+    <string name="Ftower">Fit Tower</string>
+    <string name="high10000">10,000</string>
+    <string name="step">0</string>
+    <string name="pipti">50</string>
+    <string name="tower1">100</string>
+    <string name="tower2">500</string>
+    <string name="tower3">1,000</string>
+    <string name="tower5">3,000</string>
+    <string name="tower8">5,000</string>
 
 
 </resources>

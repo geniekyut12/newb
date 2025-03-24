@@ -48,7 +48,7 @@
             android:layout_height="60sp"
             android:layout_marginStart="255sp"
             android:backgroundTint="@color/WRed"
-            android:background="@drawable/next"
+            android:background="@drawable/nextbtn11"
             android:contentDescription="@string/closestory" />
     </LinearLayout>
 </FrameLayout>

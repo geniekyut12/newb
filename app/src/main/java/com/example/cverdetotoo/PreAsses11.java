@@ -1,7 +1,7 @@
 package com.example.cverdetotoo;
 
 import android.content.Intent;
-import android.graphics.Color;
+import android.content.res.ColorStateList;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.View;
@@ -10,7 +10,6 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.content.res.ColorStateList;
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -23,7 +22,7 @@ public class PreAsses11 extends AppCompatActivity {
     private CountDownTimer countDownTimer;
     private TextView timerTextView;
 
-    // The correct answer is assumed to be prebtn1d
+    // The correct answer is assumed to be prebtn1b
     private int correctAnswerId = R.id.prebtn1b;
     private RadioGroup radioGroup;
     private Button submitButton, next11Button;
@@ -33,7 +32,7 @@ public class PreAsses11 extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        if (getSupportActionBar() != null) {
+        if(getSupportActionBar() != null) {
             getSupportActionBar().hide();
         }
         setContentView(R.layout.activity_pre_asses11);
@@ -42,7 +41,7 @@ public class PreAsses11 extends AppCompatActivity {
         score = getIntent().getIntExtra("score", 0);
 
         // Initialize views
-        timerTextView = findViewById(R.id.timer21);  // Initialize timer TextView
+        timerTextView = findViewById(R.id.timer21);  // Ensure this TextView is defined in your layout
         radioGroup = findViewById(R.id.radiopreQ11);
         submitButton = findViewById(R.id.preq11);
         next11Button = findViewById(R.id.next11);
@@ -57,7 +56,6 @@ public class PreAsses11 extends AppCompatActivity {
         submitButton.setOnClickListener(v -> {
             if (!answered) {
                 int selectedId = radioGroup.getCheckedRadioButtonId();
-
                 if (selectedId == -1) {
                     // No answer selected
                     Toast.makeText(PreAsses11.this, "Please select an answer", Toast.LENGTH_SHORT).show();
@@ -67,33 +65,29 @@ public class PreAsses11 extends AppCompatActivity {
                 // Cancel the timer
                 countDownTimer.cancel();
 
-                // Define custom darker colors
-                int darkGreen = 0xFF00CC00;  // 20% darker green
-                int darkRed = 0xFFCC0000;    // 20% darker red
+                // Define custom colors
+                int darkGreen = 0xFF00CC00;  // Dark green
+                int darkRed = 0xFFCC0000;    // Dark red
 
-                // Reset the colors of all radio buttons (in case user is retrying)
+                // Reset the button tint for all radio buttons
                 resetRadioButtonColors(radioGroup);
 
                 if (selectedId == correctAnswerId) {
-                    // Correct answer: update the selected radio button color to dark green
+                    // Correct answer: highlight the selected radio button circle with dark green
                     RadioButton selectedRadioButton = findViewById(selectedId);
-                    selectedRadioButton.setTextColor(darkGreen);
                     selectedRadioButton.setButtonTintList(ColorStateList.valueOf(darkGreen));
                     Toast.makeText(PreAsses11.this, "Correct!", Toast.LENGTH_SHORT).show();
                     score++;  // Increase score
                 } else {
-                    // Wrong answer: mark the selected radio button dark red
+                    // Wrong answer: highlight the selected radio button circle with dark red
                     RadioButton selectedRadioButton = findViewById(selectedId);
-                    selectedRadioButton.setTextColor(darkRed);
                     selectedRadioButton.setButtonTintList(ColorStateList.valueOf(darkRed));
 
                     // Also highlight the correct answer in dark green
                     RadioButton correctRadioButton = findViewById(correctAnswerId);
-                    correctRadioButton.setTextColor(darkGreen);
                     correctRadioButton.setButtonTintList(ColorStateList.valueOf(darkGreen));
                     Toast.makeText(PreAsses11.this, "Incorrect!", Toast.LENGTH_SHORT).show();
                 }
-
 
                 // Mark as answered, disable further selections, and enable next button
                 answered = true;
@@ -103,9 +97,8 @@ public class PreAsses11 extends AppCompatActivity {
             }
         });
 
-        // Set listener for the next11 button click to redirect to PreAsses12.class
+        // Set listener for the next button click to redirect to PreAsses12.class
         next11Button.setOnClickListener(v -> {
-            // Only proceed if answer has been submitted
             if (answered) {
                 Intent intent = new Intent(PreAsses11.this, PreAsses12.class);
                 intent.putExtra("score", score);  // Passing the cumulative score to the next activity
@@ -138,14 +131,9 @@ public class PreAsses11 extends AppCompatActivity {
                 next11Button.setEnabled(true); // Enable next button on auto-submission
                 Toast.makeText(PreAsses11.this, "Time is up! Correct answer is shown.", Toast.LENGTH_SHORT).show();
 
-                // Define a custom dark green color (20% darker than bright green)
                 int darkGreen = 0xFF00CC00;
-
-                // Highlight the correct answer in dark green
                 RadioButton correctRadioButton = findViewById(correctAnswerId);
-                correctRadioButton.setTextColor(darkGreen);
                 correctRadioButton.setButtonTintList(ColorStateList.valueOf(darkGreen));
-
             }
         }.start();
     }
@@ -161,14 +149,13 @@ public class PreAsses11 extends AppCompatActivity {
     }
 
     /**
-     * Resets the text color and button tint of all RadioButtons in the RadioGroup.
+     * Resets the button tint of all RadioButtons in the RadioGroup to default.
      */
     private void resetRadioButtonColors(RadioGroup radioGroup) {
         for (int i = 0; i < radioGroup.getChildCount(); i++) {
             if (radioGroup.getChildAt(i) instanceof RadioButton) {
                 RadioButton rb = (RadioButton) radioGroup.getChildAt(i);
-                rb.setTextColor(Color.BLACK);  // Reset text color to black
-                rb.setButtonTintList(null);     // Reset to default tint
+                rb.setButtonTintList(null);
             }
         }
     }
@@ -176,7 +163,6 @@ public class PreAsses11 extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        // Cancel the timer to prevent memory leaks
         if (countDownTimer != null) {
             countDownTimer.cancel();
         }

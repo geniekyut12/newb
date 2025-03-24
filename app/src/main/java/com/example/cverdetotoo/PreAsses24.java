@@ -1,7 +1,7 @@
 package com.example.cverdetotoo;
 
 import android.content.Intent;
-import android.graphics.Color;
+import android.content.res.ColorStateList;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.View;
@@ -10,7 +10,6 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.content.res.ColorStateList;
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -23,10 +22,10 @@ public class PreAsses24 extends AppCompatActivity {
     private CountDownTimer countDownTimer;
     private TextView timerTextView;
 
-    // The correct answer is assumed to be prebtn1d
+    // The correct answer is assumed to be prebtn1c
     private int correctAnswerId = R.id.prebtn1c;
     private RadioGroup radioGroup;
-    private Button submitButton, next11Button;
+    private Button submitButton, nextButton;
     private boolean answered = false;
 
     @Override
@@ -44,11 +43,12 @@ public class PreAsses24 extends AppCompatActivity {
         // Initialize views
         radioGroup = findViewById(R.id.radiopreQ24);
         submitButton = findViewById(R.id.preq24);
-        next11Button = findViewById(R.id.next24);
-        timerTextView = findViewById(R.id.timer24); // Ensure you add this TextView in your XML layout
+        nextButton = findViewById(R.id.next24);
+        timerTextView = findViewById(R.id.timer24); // Ensure this TextView is in your layout
 
         // Disable the next button until an answer is submitted
-        next11Button.setEnabled(false);
+        nextButton.setEnabled(false);
+        nextButton.setAlpha(0.5f);
 
         // Start the 20-second timer
         startTimer();
@@ -57,9 +57,7 @@ public class PreAsses24 extends AppCompatActivity {
         submitButton.setOnClickListener(v -> {
             if (!answered) {
                 int selectedId = radioGroup.getCheckedRadioButtonId();
-
                 if (selectedId == -1) {
-                    // No answer selected
                     Toast.makeText(PreAsses24.this, "Please select an answer", Toast.LENGTH_SHORT).show();
                     return;
                 }
@@ -67,29 +65,26 @@ public class PreAsses24 extends AppCompatActivity {
                 // Cancel the timer
                 countDownTimer.cancel();
 
-                // Define custom darker colors
-                int darkGreen = 0xFF00CC00;  // Dark green: 20% darker than bright green
-                int darkRed = 0xFFCC0000;    // Dark red: 20% darker than bright red
+                // Reset the button tint for all radio buttons
+                resetRadioButtonColors();
 
-                // Reset the colors of all radio buttons (in case user is retrying)
-                resetRadioButtonColors(radioGroup);
+                // Define custom colors
+                int darkGreen = 0xFF00CC00;  // Dark green
+                int darkRed = 0xFFCC0000;    // Dark red
 
                 if (selectedId == correctAnswerId) {
-                    // Correct answer: update the selected radio button color to dark green
+                    // Correct answer: highlight the selected radio button circle with dark green
                     RadioButton selectedRadioButton = findViewById(selectedId);
-                    selectedRadioButton.setTextColor(darkGreen);
                     selectedRadioButton.setButtonTintList(ColorStateList.valueOf(darkGreen));
                     Toast.makeText(PreAsses24.this, "Correct!", Toast.LENGTH_SHORT).show();
                     score++;  // Increase score
                 } else {
-                    // Wrong answer: mark the selected radio button dark red
+                    // Wrong answer: highlight the selected radio button circle with dark red
                     RadioButton selectedRadioButton = findViewById(selectedId);
-                    selectedRadioButton.setTextColor(darkRed);
                     selectedRadioButton.setButtonTintList(ColorStateList.valueOf(darkRed));
 
                     // Also highlight the correct answer in dark green
                     RadioButton correctRadioButton = findViewById(correctAnswerId);
-                    correctRadioButton.setTextColor(darkGreen);
                     correctRadioButton.setButtonTintList(ColorStateList.valueOf(darkGreen));
                     Toast.makeText(PreAsses24.this, "Incorrect!", Toast.LENGTH_SHORT).show();
                 }
@@ -98,13 +93,13 @@ public class PreAsses24 extends AppCompatActivity {
                 answered = true;
                 disableRadioGroup();
                 submitButton.setEnabled(false);
-                next11Button.setEnabled(true);
+                nextButton.setEnabled(true);
+                nextButton.setAlpha(1.0f);
             }
         });
 
-        // Set listener for the next11 button click to redirect to PreAsses12.class
-        next11Button.setOnClickListener(v -> {
-            // Only proceed if answer has been submitted
+        // Set listener for the next button click to redirect to PreAsses25.class
+        nextButton.setOnClickListener(v -> {
             if (answered) {
                 Intent intent = new Intent(PreAsses24.this, PreAsses25.class);
                 intent.putExtra("score", score);  // Passing the cumulative score to the next activity
@@ -134,13 +129,13 @@ public class PreAsses24 extends AppCompatActivity {
                 radioGroup.check(correctAnswerId);
                 answered = true;
                 submitButton.setEnabled(false);
-                next11Button.setEnabled(true); // Enable next button on auto-submission
+                nextButton.setEnabled(true);
+                nextButton.setAlpha(1.0f);
                 Toast.makeText(PreAsses24.this, "Time is up! Correct answer is shown.", Toast.LENGTH_SHORT).show();
 
-                // Highlight the correct answer in green
+                int darkGreen = 0xFF00CC00;
                 RadioButton correctRadioButton = findViewById(correctAnswerId);
-                correctRadioButton.setTextColor(Color.GREEN);
-                correctRadioButton.setButtonTintList(ColorStateList.valueOf(Color.GREEN));
+                correctRadioButton.setButtonTintList(ColorStateList.valueOf(darkGreen));
             }
         }.start();
     }
@@ -156,14 +151,13 @@ public class PreAsses24 extends AppCompatActivity {
     }
 
     /**
-     * Resets the text color and button tint of all RadioButtons in the RadioGroup.
+     * Resets the button tint of all RadioButtons in the RadioGroup to default.
      */
-    private void resetRadioButtonColors(RadioGroup radioGroup) {
+    private void resetRadioButtonColors() {
         for (int i = 0; i < radioGroup.getChildCount(); i++) {
             if (radioGroup.getChildAt(i) instanceof RadioButton) {
                 RadioButton rb = (RadioButton) radioGroup.getChildAt(i);
-                rb.setTextColor(Color.BLACK);  // Reset text color to black
-                rb.setButtonTintList(null);     // Reset to default tint
+                rb.setButtonTintList(null);
             }
         }
     }
@@ -171,7 +165,6 @@ public class PreAsses24 extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        // Cancel the timer to prevent memory leaks
         if (countDownTimer != null) {
             countDownTimer.cancel();
         }

@@ -50,7 +50,7 @@ public class PostAssess2After extends AppCompatActivity {
 
         // If failed, update the wtgm1 TextView with the motivational message
         if(resultMessage.equals("Failed")) {
-            wtgm1TextView.setText("Don't worry! Every step toward learning about the environment makes a difference. Keep going, and you'll get there! Click 'Next' to watch an educational video and discover simple ways to reduce your carbon footprint.");
+            wtgm1TextView.setText("Don't worry! Learning takes time. Review, try again, and keep going.");
         }
 
         saveScoreToFirestore(score, resultMessage);

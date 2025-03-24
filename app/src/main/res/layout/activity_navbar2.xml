@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/zxing_transparent"
     tools:context=".MainActivity">
 
     <FrameLayout
@@ -18,10 +17,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:background="@drawable/bg_gradient"
+        android:background="@drawable/navbgg"
         android:elevation="8dp"
-        app:itemIconTint="@null"
-        app:itemTextColor="@color/white_selector"
+        app:itemRippleColor="@color/BlckRed"
+        app:itemIconTint="@drawable/navbutton"
+        app:itemTextColor="#F57F7F"
         app:menu="@menu/bottom_nav_menu" />
 
 </RelativeLayout>

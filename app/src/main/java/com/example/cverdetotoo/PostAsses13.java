@@ -1,7 +1,7 @@
 package com.example.cverdetotoo;
 
 import android.content.Intent;
-import android.graphics.Color;
+import android.content.res.ColorStateList;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.View;
@@ -10,7 +10,6 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.content.res.ColorStateList;
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -43,7 +42,7 @@ public class PostAsses13 extends AppCompatActivity {
         score = getIntent().getIntExtra("score", 0);
 
         // Initialize views
-        timerTextView = findViewById(R.id.posttimer13);  // Initialize timer TextView
+        timerTextView = findViewById(R.id.posttimer13);
         radioGroup = findViewById(R.id.radiopostQ13);
         submitButton = findViewById(R.id.postq13);
         next11Button = findViewById(R.id.postnext13);
@@ -69,46 +68,46 @@ public class PostAsses13 extends AppCompatActivity {
                 // Cancel the timer
                 countDownTimer.cancel();
 
-                // Reset the colors of all radio buttons (in case user is retrying)
+                // Reset the button tint of all radio buttons (in case user is retrying)
                 resetRadioButtonColors(radioGroup);
+
                 // Define custom darker colors
-                int darkGreen = 0xFF00CC00;  // 20% darker green
-                int darkRed = 0xFFCC0000;    // 20% darker red
+                int darkGreen = 0xFF00CC00;  // Dark green
+                int darkRed = 0xFFCC0000;    // Dark red
 
                 if (selectedId == correctAnswerId) {
-                    // Correct answer: update the selected radio button color to dark green
+                    // Correct answer: update only the button tint to dark green
                     RadioButton selectedRadioButton = findViewById(selectedId);
-                    selectedRadioButton.setTextColor(darkGreen);
                     selectedRadioButton.setButtonTintList(ColorStateList.valueOf(darkGreen));
                     Toast.makeText(PostAsses13.this, "Correct!", Toast.LENGTH_SHORT).show();
                     score++;  // Increase score
                 } else {
-                    // Wrong answer: mark the selected radio button dark red
+                    // Wrong answer: mark the selected radio button dark red (only the circle)
                     RadioButton selectedRadioButton = findViewById(selectedId);
-                    selectedRadioButton.setTextColor(darkRed);
                     selectedRadioButton.setButtonTintList(ColorStateList.valueOf(darkRed));
 
-                    // Also highlight the correct answer in dark green
+                    // Also highlight the correct answer in dark green (only the circle)
                     RadioButton correctRadioButton = findViewById(correctAnswerId);
-                    correctRadioButton.setTextColor(darkGreen);
                     correctRadioButton.setButtonTintList(ColorStateList.valueOf(darkGreen));
                     Toast.makeText(PostAsses13.this, "Incorrect!", Toast.LENGTH_SHORT).show();
                 }
 
-                // Mark as answered, disable further selections, and update button opacities
+                // Mark as answered and disable further selections
                 answered = true;
                 disableRadioGroup();
+
+                // Disable the submit button (set opacity to 50%)
                 submitButton.setEnabled(false);
-                // Lower submit button opacity to 50% and set next button to full opacity (100%)
                 submitButton.setAlpha(0.5f);
+
+                // Enable the next button (set opacity to 100%)
                 next11Button.setEnabled(true);
                 next11Button.setAlpha(1.0f);
             }
         });
 
-        // Set listener for the next11 button click to redirect to PostAsses14.class
+        // Set listener for the next button click to redirect to PostAsses14.class
         next11Button.setOnClickListener(v -> {
-            // Only proceed if answer has been submitted
             if (answered) {
                 Intent intent = new Intent(PostAsses13.this, PostAsses14.class);
                 intent.putExtra("score", score);  // Passing the cumulative score to the next activity
@@ -138,18 +137,16 @@ public class PostAsses13 extends AppCompatActivity {
                 radioGroup.check(correctAnswerId);
                 answered = true;
                 submitButton.setEnabled(false);
-                // Update opacity as if the submit button was clicked
                 submitButton.setAlpha(0.5f);
                 next11Button.setEnabled(true);
                 next11Button.setAlpha(1.0f);
                 Toast.makeText(PostAsses13.this, "Time is up! Correct answer is shown.", Toast.LENGTH_SHORT).show();
 
-                // Define a custom dark green color (20% darker than bright green)
+                // Define a custom dark green color
                 int darkGreen = 0xFF00CC00;
 
-                // Highlight the correct answer in dark green
+                // Highlight the correct answer's circle in dark green
                 RadioButton correctRadioButton = findViewById(correctAnswerId);
-                correctRadioButton.setTextColor(darkGreen);
                 correctRadioButton.setButtonTintList(ColorStateList.valueOf(darkGreen));
             }
         }.start();
@@ -166,14 +163,13 @@ public class PostAsses13 extends AppCompatActivity {
     }
 
     /**
-     * Resets the text color and button tint of all RadioButtons in the RadioGroup.
+     * Resets the button tint of all RadioButtons in the RadioGroup to default.
      */
     private void resetRadioButtonColors(RadioGroup radioGroup) {
         for (int i = 0; i < radioGroup.getChildCount(); i++) {
             if (radioGroup.getChildAt(i) instanceof RadioButton) {
                 RadioButton rb = (RadioButton) radioGroup.getChildAt(i);
-                rb.setTextColor(Color.BLACK);  // Reset text color to black
-                rb.setButtonTintList(null);     // Reset to default tint
+                rb.setButtonTintList(null);
             }
         }
     }

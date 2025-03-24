@@ -37,7 +37,7 @@ public class popupWelcome5 extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // Create an Intent to navigate to popupWelcome activity
-                Intent intent = new Intent(popupWelcome5.this, HomeFragment.class);
+                Intent intent = new Intent(popupWelcome5.this, navbar .class);
 
                 // Start the new activity (popupWelcome)
                 startActivity(intent);

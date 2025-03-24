@@ -361,28 +361,22 @@
                         android:paddingRight="16dp">
                         <!-- Example Badges -->
                         <ImageView
-                            android:layout_width="75dp"
+                            android:layout_width="100dp"
                             android:layout_height="75dp"
                             android:layout_marginEnd="16dp"
-                            android:src="@drawable/cert1" />
+                            android:src="@drawable/cert1b" />
 
                         <ImageView
-                            android:layout_width="70dp"
+                            android:layout_width="100dp"
                             android:layout_height="70dp"
                             android:layout_marginEnd="16dp"
-                            android:src="@drawable/cert2" />
+                            android:src="@drawable/cert2b" />
 
                         <ImageView
-                            android:layout_width="70dp"
+                            android:layout_width="100dp"
                             android:layout_height="70dp"
                             android:layout_marginEnd="16dp"
-                            android:src="@drawable/cert3" />
-
-                        <ImageView
-                            android:layout_width="70dp"
-                            android:layout_height="70dp"
-                            android:layout_marginEnd="16dp"
-                            android:src="@drawable/cert5" />
+                            android:src="@drawable/cert2b" />
                     </LinearLayout>
                 </HorizontalScrollView>
 
@@ -568,7 +562,7 @@
                     <!-- 1) The main tower body -->
                     <ImageView
                         android:id="@+id/imageTower"
-                        android:layout_width="wrap_content"
+                        android:layout_width="250sp"
                         android:layout_height="match_parent"
                         android:layout_gravity="center"
                         android:adjustViewBounds="true"
@@ -583,8 +577,9 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="top|center_horizontal"
                         android:layout_marginTop="35dp"
-                        android:text="0"
-                        android:textColor="@android:color/white"
+                        android:fontFamily="@font/poppins_semibold_italic"
+                        android:text="@string/step"
+                        android:textColor="@color/WBlue"
                         android:textSize="28sp"
                         android:textStyle="bold" />
 
@@ -601,8 +596,9 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="top|center_horizontal"
                         android:layout_marginTop="520dp"
-                        android:text="50"
-                        android:textColor="@android:color/white"
+                        android:fontFamily="@font/poppinsregular"
+                        android:text="@string/pipti"
+                        android:textColor="@color/WBlue"
                         android:textSize="16sp"
                         android:textStyle="bold" />
 
@@ -613,8 +609,9 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="top|center_horizontal"
                         android:layout_marginTop="460dp"
-                        android:text="200"
-                        android:textColor="@android:color/white"
+                        android:fontFamily="@font/poppinsregular"
+                        android:text="@string/tower1"
+                        android:textColor="@color/WBlue"
                         android:textSize="16sp"
                         android:textStyle="bold" />
 
@@ -625,8 +622,9 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="top|center_horizontal"
                         android:layout_marginTop="400dp"
-                        android:text="500"
-                        android:textColor="@android:color/white"
+                        android:fontFamily="@font/poppinsregular"
+                        android:text="@string/tower2"
+                        android:textColor="@color/WBlue"
                         android:textSize="16sp"
                         android:textStyle="bold" />
 
@@ -637,8 +635,9 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="top|center_horizontal"
                         android:layout_marginTop="340dp"
-                        android:text="1,000"
-                        android:textColor="@android:color/white"
+                        android:fontFamily="@font/poppinsregular"
+                        android:text="@string/tower3"
+                        android:textColor="@color/WBlue"
                         android:textSize="16sp"
                         android:textStyle="bold" />
 
@@ -649,8 +648,9 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="top|center_horizontal"
                         android:layout_marginTop="280dp"
-                        android:text="3,000"
-                        android:textColor="@android:color/white"
+                        android:fontFamily="@font/poppinsregular"
+                        android:text="@string/tower5"
+                        android:textColor="@color/WBlue"
                         android:textSize="16sp"
                         android:textStyle="bold" />
 
@@ -661,8 +661,9 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="top|center_horizontal"
                         android:layout_marginTop="220dp"
-                        android:text="5,000"
-                        android:textColor="@android:color/white"
+                        android:fontFamily="@font/poppinsmedium"
+                        android:text="@string/tower8"
+                        android:textColor="@color/BlckBlue"
                         android:textSize="20sp"
                         android:textStyle="bold" />
 
@@ -673,8 +674,9 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="top|center_horizontal"
                         android:layout_marginTop="160dp"
-                        android:text="10,000"
-                        android:textColor="@android:color/white"
+                        android:fontFamily="@font/poppinsmedium"
+                        android:text="@string/high10000"
+                        android:textColor="@color/BlckBlue"
                         android:textSize="24sp"
                         android:textStyle="bold" />
 
@@ -684,8 +686,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="bottom|center_horizontal"
-                        android:layout_marginBottom="20dp"
-                        android:text="Fit Tower"
+                        android:layout_marginBottom="-10sp"
+                        android:fontFamily="@font/poppinsmedium"
+                        android:text="@string/Ftower"
                         android:textColor="@android:color/white"
                         android:textSize="20sp"
                         android:textStyle="bold" />
@@ -758,6 +761,8 @@
                         android:textSize="16sp"
                         android:layout_marginStart="40sp"
                         android:layout_marginTop="8dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
                         android:textColor="@color/WBlue"/>
                 </LinearLayout>
 

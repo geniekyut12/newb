@@ -202,6 +202,7 @@
         <activity
             android:name=".BadgesFragment"
             android:exported="false" />
+
         <activity
             android:name=".Settings"
             android:exported="false" /> <!-- Duplicate Activities from the first and second manifest merged -->
@@ -224,6 +225,16 @@
             android:name=".popupWelcome"
             android:exported="true"
             android:theme="@style/Theme.AppCompat.Dialog" />
+        <activity android:name=".popupWelcome2"
+            />
+        <activity android:name=".popupWelcome3"
+            />
+        <activity android:name=".popupWelcome4"
+            />
+        <activity android:name=".popupWelcome5"
+           />
+
+
         <activity
             android:name=".GPSstart"
             android:exported="false" /> <!-- Launcher Activity -->

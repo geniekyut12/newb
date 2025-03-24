@@ -1,7 +1,7 @@
 package com.example.cverdetotoo;
 
 import android.content.Intent;
-import android.graphics.Color;
+import android.content.res.ColorStateList;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.View;
@@ -10,7 +10,6 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.content.res.ColorStateList;
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -23,10 +22,10 @@ public class PostAsses21 extends AppCompatActivity {
     private CountDownTimer countDownTimer;
     private TextView timerTextView;
 
-    // The correct answer is assumed to be prebtn1d
+    // The correct answer is assumed to be prebtn1b
     private int correctAnswerId = R.id.prebtn1b;
     private RadioGroup radioGroup;
-    private Button submitButton, next11Button;
+    private Button submitButton, nextButton;
     private boolean answered = false;
 
     @Override
@@ -42,13 +41,14 @@ public class PostAsses21 extends AppCompatActivity {
         score = getIntent().getIntExtra("score", 0);
 
         // Initialize views
-        timerTextView = findViewById(R.id.posttimer21);  // Initialize timer TextView
+        timerTextView = findViewById(R.id.posttimer21);
         radioGroup = findViewById(R.id.radiopostQ21);
         submitButton = findViewById(R.id.postq21);
-        next11Button = findViewById(R.id.postnext21);
+        nextButton = findViewById(R.id.postnext21);
 
         // Disable the next button until an answer is submitted
-        next11Button.setEnabled(false);
+        nextButton.setEnabled(false);
+        nextButton.setAlpha(0.5f);
 
         // Start the 20-second timer
         startTimer();
@@ -57,7 +57,6 @@ public class PostAsses21 extends AppCompatActivity {
         submitButton.setOnClickListener(v -> {
             if (!answered) {
                 int selectedId = radioGroup.getCheckedRadioButtonId();
-
                 if (selectedId == -1) {
                     // No answer selected
                     Toast.makeText(PostAsses21.this, "Please select an answer", Toast.LENGTH_SHORT).show();
@@ -67,28 +66,26 @@ public class PostAsses21 extends AppCompatActivity {
                 // Cancel the timer
                 countDownTimer.cancel();
 
-                // Reset the colors of all radio buttons (in case user is retrying)
-                resetRadioButtonColors(radioGroup);
-                // Define custom darker colors
-                int darkGreen = 0xFF00CC00;  // 20% darker green
-                int darkRed = 0xFFCC0000;    // 20% darker red
+                // Reset the button tint of all radio buttons
+                resetRadioButtonColors();
+
+                // Define custom colors
+                int darkGreen = 0xFF00CC00;  // Dark green
+                int darkRed = 0xFFCC0000;    // Dark red
 
                 if (selectedId == correctAnswerId) {
-                    // Correct answer: update the selected radio button color to dark green
+                    // Correct answer: highlight the selected radio button circle with dark green
                     RadioButton selectedRadioButton = findViewById(selectedId);
-                    selectedRadioButton.setTextColor(darkGreen);
                     selectedRadioButton.setButtonTintList(ColorStateList.valueOf(darkGreen));
                     Toast.makeText(PostAsses21.this, "Correct!", Toast.LENGTH_SHORT).show();
                     score++;  // Increase score
                 } else {
-                    // Wrong answer: mark the selected radio button dark red
+                    // Wrong answer: highlight the selected radio button circle with dark red
                     RadioButton selectedRadioButton = findViewById(selectedId);
-                    selectedRadioButton.setTextColor(darkRed);
                     selectedRadioButton.setButtonTintList(ColorStateList.valueOf(darkRed));
 
                     // Also highlight the correct answer in dark green
                     RadioButton correctRadioButton = findViewById(correctAnswerId);
-                    correctRadioButton.setTextColor(darkGreen);
                     correctRadioButton.setButtonTintList(ColorStateList.valueOf(darkGreen));
                     Toast.makeText(PostAsses21.this, "Incorrect!", Toast.LENGTH_SHORT).show();
                 }
@@ -97,16 +94,14 @@ public class PostAsses21 extends AppCompatActivity {
                 answered = true;
                 disableRadioGroup();
                 submitButton.setEnabled(false);
-                // Lower submit button opacity to 50% and enable next button at full opacity (100%)
                 submitButton.setAlpha(0.5f);
-                next11Button.setEnabled(true);
-                next11Button.setAlpha(1.0f);
+                nextButton.setEnabled(true);
+                nextButton.setAlpha(1.0f);
             }
         });
 
-        // Set listener for the next11 button click to redirect to PreAsses12.class
-        next11Button.setOnClickListener(v -> {
-            // Only proceed if answer has been submitted
+        // Set listener for the next button click to redirect to PostAsses22.class
+        nextButton.setOnClickListener(v -> {
             if (answered) {
                 Intent intent = new Intent(PostAsses21.this, PostAsses22.class);
                 intent.putExtra("score", score);  // Passing the cumulative score to the next activity
@@ -136,17 +131,14 @@ public class PostAsses21 extends AppCompatActivity {
                 radioGroup.check(correctAnswerId);
                 answered = true;
                 submitButton.setEnabled(false);
-                next11Button.setEnabled(true); // Enable next button on auto-submission
+                submitButton.setAlpha(0.5f);
+                nextButton.setEnabled(true);
+                nextButton.setAlpha(1.0f);
                 Toast.makeText(PostAsses21.this, "Time is up! Correct answer is shown.", Toast.LENGTH_SHORT).show();
 
-                // Define a custom dark green color (20% darker than bright green)
                 int darkGreen = 0xFF00CC00;
-
-                // Highlight the correct answer in dark green
                 RadioButton correctRadioButton = findViewById(correctAnswerId);
-                correctRadioButton.setTextColor(darkGreen);
                 correctRadioButton.setButtonTintList(ColorStateList.valueOf(darkGreen));
-
             }
         }.start();
     }
@@ -162,14 +154,13 @@ public class PostAsses21 extends AppCompatActivity {
     }
 
     /**
-     * Resets the text color and button tint of all RadioButtons in the RadioGroup.
+     * Resets the button tint of all RadioButtons in the RadioGroup to default.
      */
-    private void resetRadioButtonColors(RadioGroup radioGroup) {
+    private void resetRadioButtonColors() {
         for (int i = 0; i < radioGroup.getChildCount(); i++) {
             if (radioGroup.getChildAt(i) instanceof RadioButton) {
                 RadioButton rb = (RadioButton) radioGroup.getChildAt(i);
-                rb.setTextColor(Color.BLACK);  // Reset text color to black
-                rb.setButtonTintList(null);     // Reset to default tint
+                rb.setButtonTintList(null);
             }
         }
     }
@@ -177,7 +168,6 @@ public class PostAsses21 extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        // Cancel the timer to prevent memory leaks
         if (countDownTimer != null) {
             countDownTimer.cancel();
         }
