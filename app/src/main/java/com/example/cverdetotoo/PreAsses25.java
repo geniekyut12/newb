@@ -94,6 +94,7 @@ public class PreAsses25 extends AppCompatActivity {
                 answered = true;
                 disableRadioGroup();
                 submitButton.setEnabled(false);
+                submitButton.setAlpha(0.5f);
                 nextButton.setEnabled(true);
                 nextButton.setAlpha(1.0f);
             }
@@ -130,6 +131,7 @@ public class PreAsses25 extends AppCompatActivity {
                 radioGroup.check(correctAnswerId);
                 answered = true;
                 submitButton.setEnabled(false);
+                submitButton.setAlpha(0.5f);
                 nextButton.setEnabled(true);
                 nextButton.setAlpha(1.0f);
                 Toast.makeText(PreAsses25.this, "Time is up! Correct answer is shown.", Toast.LENGTH_SHORT).show();

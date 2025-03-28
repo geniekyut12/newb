@@ -39,6 +39,10 @@ public class PreAssess2after extends AppCompatActivity {
         resultTextView = findViewById(R.id.wtg);
         wtgm1TextView = findViewById(R.id.wtgm); // Make sure this exists in your XML layout
 
+        wtgm1TextView.setSingleLine(false);
+        wtgm1TextView.setMaxLines(Integer.MAX_VALUE); // Allow as many lines as needed
+        wtgm1TextView.setEllipsize(null);
+
         int score = getIntent().getIntExtra("score", 0);
         scoreTextView.setText(String.valueOf(score));
 
@@ -89,7 +93,7 @@ public class PreAssess2after extends AppCompatActivity {
     }
 
     private void navigateToVideo(int score, String result) {
-        Intent intent = new Intent(this, video1.class);
+        Intent intent = new Intent(this, video2.class);
         intent.putExtra("isQuizDone", true);
         intent.putExtra("score", score);
         intent.putExtra("result", result);

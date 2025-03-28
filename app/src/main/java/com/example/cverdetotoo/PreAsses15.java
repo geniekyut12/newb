@@ -27,7 +27,7 @@ public class PreAsses15 extends AppCompatActivity {
     private TextView timerTextView;
 
     // The correct answer is assumed to be prebtn1c
-    private int correctAnswerId = R.id.prebtn1c;
+    private int correctAnswerId = R.id.prebtn1d;
     private RadioGroup radioGroup;
     private Button submitButton, next11Button;
     private boolean answered = false;
@@ -52,6 +52,7 @@ public class PreAsses15 extends AppCompatActivity {
 
         // Disable the next button until an answer is submitted
         next11Button.setEnabled(false);
+        next11Button.setAlpha(1.0f);
 
         // Start the 20-second timer
         startTimer();
@@ -97,7 +98,9 @@ public class PreAsses15 extends AppCompatActivity {
                 answered = true;
                 disableRadioGroup();
                 submitButton.setEnabled(false);
+                submitButton.setAlpha(0.5f);
                 next11Button.setEnabled(true);
+                submitButton.setAlpha(0.5f);
             }
         });
 
@@ -132,7 +135,9 @@ public class PreAsses15 extends AppCompatActivity {
                 radioGroup.check(correctAnswerId);
                 answered = true;
                 submitButton.setEnabled(false);
+                submitButton.setAlpha(0.5f);
                 next11Button.setEnabled(true); // Enable next button on auto-submission
+                next11Button.setAlpha(1.0f);
                 Toast.makeText(PreAsses15.this, "Time is up! Correct answer is shown.", Toast.LENGTH_SHORT).show();
 
                 int darkGreen = 0xFF00CC00;

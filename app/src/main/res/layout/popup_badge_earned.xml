@@ -56,7 +56,7 @@
     <LinearLayout
         android:id="@+id/layoutContent"
         android:layout_width="382dp"
-        android:layout_height="425dp"
+        android:layout_height="wrap_content"
         android:gravity="center_horizontal"
         android:orientation="vertical"
         android:padding="16dp">
@@ -65,7 +65,7 @@
         <FrameLayout
             android:layout_width="120dp"
             android:layout_height="120dp"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="34dp"
             android:layout_marginBottom="8dp"
             android:background="@drawable/circle_gray"
             android:gravity="center">
@@ -85,8 +85,9 @@
             android:id="@+id/textTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="15sp"
             android:layout_marginBottom="8dp"
-            android:text="Well done!"
+            android:text="@string/welldone"
             android:textColor="@android:color/white"
             android:textSize="20sp"
             android:textStyle="bold" />
@@ -97,9 +98,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="24dp"
+            android:layout_marginTop="20sp"
             android:layout_marginBottom="16dp"
+            style="@style/blurr"
             android:gravity="center"
-            android:text="You've earned the [Badge Name] for tracking your travel, keep making sustainable choices!"
+            android:fontFamily="@font/poppinsregular"
+            android:text="@string/badgetxt"
             android:textColor="@android:color/white"
             android:textSize="14sp" />
 
@@ -108,9 +112,12 @@
             android:id="@+id/buttonContinue"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="50sp"
             android:layout_marginBottom="24dp"
-            android:text="CONTINUE"
-            android:textColor="@android:color/white" />
+            style="@style/badgebtn1"
+            android:fontFamily="@font/poppins_semibold"
+            android:text="@string/cont"
+            android:textColor="@color/BlckRed" />
 
     </LinearLayout>
 

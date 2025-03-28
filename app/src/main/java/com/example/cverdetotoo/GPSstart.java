@@ -10,23 +10,18 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class GPSstart extends AppCompatActivity {
 
-    // Optional: If you want multiple facts, store them in an array
-    private String[] facts = {
-            "If just 10% more students walked or biked to school...",
-            "Riding a bike burns about 600 calories per hour...",
-            "Walking 30 minutes a day improves cardiovascular health..."
-    };
+
     private int currentFactIndex = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         // Make sure activity_battle_eco_start.xml is in res/layout
-        setContentView(R.layout.activity_battle_eco_start);
+        setContentView(R.layout.activity_gpsstart);
 
         // Find views by ID
-        View parentLayout = findViewById(R.id.parentLayout);
-        final TextView tvFact = findViewById(R.id.tvFact);
+        View parentLayout = findViewById(R.id.parentLayout12);
+        final TextView tvFact = findViewById(R.id.tvFact12);
 
         // (Optional) Show the first fact immediately
         // tvFact.setText(facts[currentFactIndex]);

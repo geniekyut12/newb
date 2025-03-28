@@ -37,16 +37,18 @@
 
         <ImageButton
             android:id="@+id/close_button2"
-            android:layout_width="60sp"
-            android:layout_height="60sp"
+            android:layout_width="40dp"
+            android:layout_height="35dp"
+            android:gravity="center"
             android:backgroundTint="@color/WRed"
             android:background="@drawable/backbutton"
             android:contentDescription="@string/closestory" />
 
         <ImageButton
             android:id="@+id/next_button2"
-            android:layout_width="60sp"
-            android:layout_height="60sp"
+            android:layout_width="40dp"
+            android:layout_height="35dp"
+            android:gravity="center"
             android:layout_marginStart="255sp"
             android:backgroundTint="@color/WRed"
             android:background="@drawable/nextbtn11"

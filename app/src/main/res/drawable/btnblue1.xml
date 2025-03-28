@@ -1,8 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shape android:shape="rectangle"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
 
-    <solid android:color="#5895EF"/>
-    <corners android:radius="5dp"/>
-    <stroke android:color="#294D83" android:width="2dp"/>
+    <!-- A robust red gradient from left (darkest) to right (brightest). -->
+    <gradient
+        android:startColor="#1D74B3"
+        android:centerColor="#0F4B88"
+        android:endColor="#00215E"
+        android:angle="0" />
+
+    <corners
+        android:topLeftRadius="30dp"
+        android:topRightRadius="30dp"
+        android:bottomLeftRadius="30dp"
+        android:bottomRightRadius="30dp"/>
+    <!-- Optional: If you want rounded corners, add this. -->
+
 </shape>

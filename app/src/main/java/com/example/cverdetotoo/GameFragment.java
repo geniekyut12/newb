@@ -31,7 +31,7 @@ public class GameFragment extends Fragment {
         });
 
         cardGoGreen.setOnClickListener(v -> {
-            Intent intent = new Intent(getActivity(), IntroActivity.class);
+            Intent intent = new Intent(getActivity(), GPSstart.class);
             startActivity(intent);
         });
 

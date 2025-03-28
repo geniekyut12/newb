@@ -50,6 +50,7 @@ public class PreAsses14 extends AppCompatActivity {
 
         // Disable the Next button until an answer is submitted
         next11Button.setEnabled(false);
+        next11Button.setAlpha(1.0f);
 
         // Start the 20-second timer
         startTimer();
@@ -93,7 +94,9 @@ public class PreAsses14 extends AppCompatActivity {
                 answered = true;
                 disableRadioGroup();
                 submitButton.setEnabled(false);
+                submitButton.setAlpha(0.5f);
                 next11Button.setEnabled(true);
+                next11Button.setAlpha(1.0f);
             }
         });
 
@@ -129,7 +132,9 @@ public class PreAsses14 extends AppCompatActivity {
                 radioGroup.check(correctAnswerId);
                 answered = true;
                 submitButton.setEnabled(false);
+                submitButton.setAlpha(0.5f);
                 next11Button.setEnabled(true); // Enable Next button on auto-submission
+                next11Button.setAlpha(1.0f);
                 Toast.makeText(PreAsses14.this, "Time is up! Correct answer is shown.", Toast.LENGTH_SHORT).show();
 
                 int darkGreen = 0xFF00CC00;

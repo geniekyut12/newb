@@ -6,7 +6,7 @@
     android:id="@+id/parentLayout1"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg_gradient"
+    android:background="@drawable/gamesinsbg"
     tools:context=".IntroActivity">
 
     <!-- Top-left back arrow (if you need it) -->
@@ -21,18 +21,13 @@
         android:layout_marginTop="16dp"
         android:layout_marginStart="16dp" />
 
-    <!-- Walking icon, centered horizontally under the arrow -->
-
-    <!-- "Did you know?" heading, left-aligned below the icon -->
-
-    <!-- Fact text, left-aligned under "Did you know?" -->
 
     <!-- "Tap the screen" near the bottom, centered horizontally -->
 
     <TextView
         android:id="@+id/tvFact1"
         android:layout_width="294dp"
-        android:layout_height="133dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="32dp"
@@ -41,6 +36,7 @@
         android:text="Plant-based foods are significantly lower than that of animal products, often by a factor of 10 or even 100! This means that choosing a plant-based meal over a meat-heavy one can have a substantial positive impact on the environment."
         android:textColor="@android:color/white"
         android:textSize="16sp"
+        android:fontFamily="@font/poppinsregular"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -66,6 +62,7 @@
         android:layout_marginTop="12dp"
         android:layout_marginEnd="32dp"
         android:gravity="left"
+        android:fontFamily="@font/poppins_semibold"
         android:text="Did you know?"
         android:textColor="@android:color/white"
         android:textSize="24sp"
@@ -81,6 +78,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="108dp"
         android:gravity="center"
+        android:fontFamily="@font/poppins_semibold"
         android:text="Tap the screen"
         android:textColor="@android:color/white"
         android:textSize="14sp"

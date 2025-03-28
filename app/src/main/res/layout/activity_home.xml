@@ -87,7 +87,7 @@
                 android:clickable="true"
                 android:focusable="true"
                 android:text="@string/seemore"
-                android:textSize="18sp"
+                android:textSize="16sp"
                 android:textStyle="bold"
                 android:textColor="#FFF3F6" />
         </LinearLayout>

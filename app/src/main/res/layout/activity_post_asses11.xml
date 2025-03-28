@@ -25,9 +25,10 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <ImageView
-                android:layout_width="60dp"
-                android:layout_height="60dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:contentDescription="@string/timee"
+                android:layout_marginTop="-5sp"
                 app:srcCompat="@drawable/timer"/>
 
             <TextView
@@ -35,11 +36,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:fontFamily="@font/afacadbolditalic"
+                android:fontFamily="@font/poppinsmedium"
                 android:text="@string/timer1"
                 android:textColor="@color/BlckBlue"
                 android:textStyle="bold"
-                android:textSize="33sp" />
+                android:textSize="22sp" />
         </LinearLayout>
 
         <FrameLayout

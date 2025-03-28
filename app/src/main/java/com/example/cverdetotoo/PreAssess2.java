@@ -52,7 +52,7 @@ public class PreAssess2 extends AppCompatActivity {
             username = FirebaseAuth.getInstance().getCurrentUser().getUid();
         }
         // Reference to the user's pre-assessment document in the "PreAssess" collection
-        DocumentReference docRef = db.collection("PreAssess").document(username);
+        DocumentReference docRef = db.collection("PreAssess2").document(username);
         docRef.get().addOnCompleteListener(task -> {
             if (task.isSuccessful()) {
                 DocumentSnapshot document = task.getResult();
@@ -62,12 +62,12 @@ public class PreAssess2 extends AppCompatActivity {
                     startActivity(intent);
                 } else {
                     // No data exists, redirect to PreAsses11 to collect data
-                    Intent intent = new Intent(PreAssess2.this, PreAsses12.class);
+                    Intent intent = new Intent(PreAssess2.this, PreAsses21.class);
                     startActivity(intent);
                 }
             } else {
                 // In case of an error, optionally log the error and redirect to PreAsses11
-                Intent intent = new Intent(PreAssess2.this, PreAsses12.class);
+                Intent intent = new Intent(PreAssess2.this, PreAsses21.class);
                 startActivity(intent);
             }
         });

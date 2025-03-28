@@ -61,21 +61,25 @@
             <!-- textCoinValue: used to display the user’s coin/points -->
             <TextView
                 android:id="@+id/textCoinValue"
-                android:layout_width="wrap_content"
+                android:layout_width="80sp"
                 android:layout_height="wrap_content"
-                android:text="500"
+                android:text="@string/coins"
+                android:fontFamily="@font/poppinsmedium"
+                android:background="@drawable/btnblue1"
                 android:textColor="@android:color/white"
                 android:textSize="16sp"
-                android:layout_marginEnd="8dp" />
+                android:layout_marginEnd="-28dp"
+                android:layout_gravity="center_vertical"/>
 
             <!-- imageCoinIcon: clickable coin icon to open the shop -->
             <ImageView
-                android:id="@+id/imageCoinIcon"
-                android:layout_width="44dp"
-                android:layout_height="44dp"
+                    android:id="@+id/imageCoinIcon"
+                android:layout_width="34dp"
+                android:layout_height="34dp"
                 android:src="@drawable/coin"
                 android:clickable="true"
-                android:focusable="true" />
+                android:focusable="true"
+                android:layout_gravity="end|center_vertical"/>
         </LinearLayout>
     </LinearLayout>
 
@@ -107,9 +111,9 @@
                 android:layout_width="34dp"
                 android:layout_height="34dp"
                 android:layout_gravity="center"
-                android:layout_marginBottom="2sp"
+                android:layout_marginBottom="6sp"
                 android:layout_marginLeft="-3sp"
-                android:src="@drawable/notif" />
+                android:src="@drawable/chatbot" />
         </FrameLayout>
 
         <!-- Settings Icon -->
@@ -252,7 +256,7 @@
                         android:fontFamily="@font/poppins_italic"
                         android:text="@string/seeAll"
                         android:textColor="@android:color/white"
-                        android:textSize="20sp" />
+                        android:textSize="14sp" />
                 </LinearLayout>
 
                 <!-- Horizontal ScrollView for Badges -->
@@ -337,7 +341,7 @@
                         android:fontFamily="@font/poppins_italic"
                         android:text="@string/seeAll"
                         android:textColor="@android:color/white"
-                        android:textSize="20sp" />
+                        android:textSize="14sp" />
                 </LinearLayout>
 
                 <!-- Horizontal ScrollView for Badges -->
@@ -441,7 +445,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="@string/totalC"
-                                android:drawableStart="@drawable/coin"
+                                android:drawableStart="@drawable/rewardd"
                                 android:drawablePadding="4dp"
                                 android:textColor="@color/WRed"
                                 android:fontFamily="@font/poppinsmedium"

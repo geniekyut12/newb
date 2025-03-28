@@ -23,7 +23,7 @@
     <string name="username">Username</string>
     <string name="closestory">\n</string>
     <string name="logo_description">\n</string>
-    <string name="instrucpreassess">This pre-assessment checks your prior knowledge with no time limit and <b><u>won’t affect your final score.</u></b> Click \"Start\" when ready.</string>
+    <string name="instrucpreassess">This pre-assessment checks your prior knowledge and <b><u>won’t affect your final score.</u></b> Click \"Start\" when ready.</string>
     <string name="start">Start</string>
     <string name="instruc">INSTRUCTIONS:</string>
     <string name="timer1">00:00</string>
@@ -140,7 +140,7 @@
     <string name="channel_name">Motivational Notifications</string>
     <string name="channel_description">Channel for motivational notifications and facts</string>
     <string name="hey">Hey There! I am Ceven, Let me show you around!♡</string>
-    <string name="diduknow">\nDid you know?</string>
+    <string name="diduknow">Did you know?</string>
     <string name="welcome2"><b><u>Everything we do leaves a carbon footprint</u></b> — sending an email, eating a meal, or streaming a video all contribute to CO₂ emissions. Even a single cheeseburger can produce CO₂!</string>
     <string name="back">BACK</string>
     <string name="welcome3">Cars release carbon dioxide, a greenhouse gas that contributes to climate change. Choosing to walk, bike, or take public transport helps reduce our carbon footprint</string>
@@ -278,6 +278,20 @@
     <string name="tower3">1,000</string>
     <string name="tower5">3,000</string>
     <string name="tower8">5,000</string>
+
+    <string name="imageproc">ImageProcessing</string>
+    <string name="capture">TODAY’S CHALLENGE :\n\nLow Carbon Food</string>
+    <string name="earn">You\'ve earned the [Badge Name] for tracking your meals, keep making mindful and sustainable food choices!</string>
+    <string name="score">Score: 0</string>
+    <string name="upload">Upload Image</string>
+    <string name="captureimg">Capture Image</string>
+    <string name="cont">CONTINUE</string>
+    <string name="badgetxt">You\'ve earned the [Badge Name] for tracking your travel, keep making sustainable choices!</string>
+    <string name="welldone">Well Done!</string>
+    <string name="gpsinstruc">A 10% increase in students walking or biking to school would reduce annual school commute carbon emissions by 2 million tons.</string>
+    <string name="tapscreen">Tap the screen to continue</string>
+    <string name="gameinstruc2">Every card reflects a sustainable action. \'Green Shield\' defends you while symbolizing how renewable energy cuts emissions. Small eco-choices lead to big change!</string>
+    <string name="coins">"  500"</string>
 
 
 </resources>

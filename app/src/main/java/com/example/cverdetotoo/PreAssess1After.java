@@ -41,6 +41,10 @@ public class PreAssess1After extends AppCompatActivity {
         resultTextView = findViewById(R.id.wtg);   // Displays "Well Done!" or "Failed"
         wtgm1TextView = findViewById(R.id.wtgm1);    // Displays the motivational message if the user failed
 
+        wtgm1TextView.setSingleLine(false);
+        wtgm1TextView.setMaxLines(Integer.MAX_VALUE); // Allow as many lines as needed
+        wtgm1TextView.setEllipsize(null);
+
         int score = getIntent().getIntExtra("score", 0);
         scoreTextView.setText(String.valueOf(score));
 
@@ -50,7 +54,7 @@ public class PreAssess1After extends AppCompatActivity {
 
         // If the user failed, update wtgm1 with the motivational message
         if(resultMessage.equals("Failed")){
-            wtgm1TextView.setText("Don't worry! Every step toward learning about the environment makes a difference. Keep going, and you'll get there! Click 'Next' to watch an educational video and discover simple ways to reduce your carbon footprint.");
+            wtgm1TextView.setText("Don't worry! Every step \ntoward learning about the environment makes a difference.\n Keep going, and you'll get there! \nClick 'Next' to watch an educational video and discover simple\n ways to reduce your carbon footprint.");
         }
 
         saveScoreToFirestore(score, resultMessage);
@@ -85,7 +89,7 @@ public class PreAssess1After extends AppCompatActivity {
     }
 
     private void navigateToNavbar(int score, String result) {
-        Intent intent = new Intent(this, navbar.class);
+        Intent intent = new Intent(this, video1.class);
         intent.putExtra("isCompleted", true);
         intent.putExtra("score", score);
         intent.putExtra("result", result); // Pass result message

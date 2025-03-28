@@ -1,106 +1,114 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:layout_height="match_parent">
 
-    <!-- Background Image -->
+    <!-- Fixed Background Image -->
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scaleType="centerCrop"
         android:src="@drawable/vid1bg" />
 
-    <LinearLayout
-        android:id="@+id/afterpre1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/post1done"
-        android:layout_marginTop="100dp"
-        android:layout_marginBottom="16dp"
-        android:background="@drawable/textbgwhite"
-        android:gravity="center_horizontal"
-        android:orientation="vertical">
+    <!-- Scrollable Content -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
 
-        <!-- Logo -->
-        <ImageView
-            android:id="@+id/logo"
-            android:layout_width="152dp"
-            android:layout_height="152dp"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="20sp"
-            app:srcCompat="@drawable/cverdee" />
-
-        <!-- Well Done -->
-        <TextView
-            android:id="@+id/wtg"
-            android:layout_width="wrap_content"
-            android:layout_height="68dp"
-            android:layout_marginTop="1dp"
-            android:fontFamily="@font/poppinsregular"
-            android:gravity="center"
-            android:text="@string/WD"
-            android:textColor="@color/BlckGreen"
-            android:textSize="50sp"
-            android:textStyle="bold" />
-
-        <!-- Total Carbon Text -->
-        <TextView
-            android:id="@+id/totalcarb"
-            android:layout_width="wrap_content"
+        <!-- Container for Scrollable Elements -->
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="9dp"
-            android:text="@string/pre1scoress"
-            android:textColor="@color/BlckGreen"
-            android:textSize="20sp"
-            android:textStyle="bold" />
+            android:orientation="vertical"
+            android:gravity="center_horizontal"
+            android:paddingTop="100dp"
+            android:paddingBottom="135dp"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp">
 
-        <!-- Total Carbon Value -->
-        <TextView
-            android:id="@+id/post1score"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="18dp"
-            android:gravity="center"
-            android:text="@string/pre1score"
-            android:textColor="@color/RBBG"
-            android:textSize="24sp"
-            android:textStyle="bold" />
+            <!-- Content Block -->
+            <LinearLayout
+                android:id="@+id/afterpre1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/textbgwhite"
+                android:gravity="center_horizontal"
+                android:orientation="vertical">
 
-        <!-- Additional Note -->
+                <!-- Logo -->
+                <ImageView
+                    android:id="@+id/logo"
+                    android:layout_width="152dp"
+                    android:layout_height="152dp"
+                    android:layout_marginTop="20sp"
+                    app:srcCompat="@drawable/cverdee" />
 
-        <TextView
-            android:id="@+id/wtgm1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="6dp"
-            android:layout_marginTop="26dp"
-            android:layout_marginBottom="51sp"
-            android:fontFamily="@font/afacad"
-            android:gravity="center"
-            android:text="@string/prenote"
-            android:textAlignment="center"
-            android:textColor="@color/BlckGreen"
-            android:textSize="22sp" />
-    </LinearLayout>
+                <!-- Well Done -->
+                <TextView
+                    android:id="@+id/wtg"
+                    android:layout_width="wrap_content"
+                    android:layout_height="68dp"
+                    android:layout_marginTop="1dp"
+                    android:fontFamily="@font/poppinsregular"
+                    android:gravity="center"
+                    android:text="@string/WD"
+                    android:textColor="@color/BlckGreen"
+                    android:textSize="50sp"
+                    android:textStyle="bold" />
 
+                <!-- Total Carbon Text -->
+                <TextView
+                    android:id="@+id/totalcarb"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="9dp"
+                    android:text="@string/pre1scoress"
+                    android:textColor="@color/BlckGreen"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
 
-    <!-- Next Button -->
-    <Button
-        android:id="@+id/post1done"
-        android:layout_width="231dp"
-        android:layout_height="59dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="84dp"
-        android:layout_marginBottom="135dp"
-        style="@style/assessbtn"
-        android:fontFamily="@font/poppinsmedium"
-        android:text="@string/next"
-        android:textColor="@color/BlckGreen"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/afterpre1" />
+                <!-- Total Carbon Value -->
+                <TextView
+                    android:id="@+id/post1score"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="18dp"
+                    android:gravity="center"
+                    android:text="@string/pre1score"
+                    android:textColor="@color/darkG"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
 
+                <!-- Additional Note -->
+                <TextView
+                    android:id="@+id/wtgm1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="6dp"
+                    android:layout_marginTop="26dp"
+                    android:layout_marginBottom="51sp"
+                    android:fontFamily="@font/afacad"
+                    android:gravity="center"
+                    android:text="@string/prenote"
+                    android:textAlignment="center"
+                    android:textColor="@color/BlckGreen"
+                    android:textSize="22sp" />
+            </LinearLayout>
+
+            <!-- Next Button -->
+            <Button
+                android:id="@+id/post1done"
+                android:layout_width="231dp"
+                android:layout_height="59dp"
+                android:layout_marginTop="16dp"
+                style="@style/assessbtn"
+                android:fontFamily="@font/poppinsmedium"
+                android:text="@string/next"
+                android:textColor="@color/BlckGreen"
+                android:textSize="18sp" />
+        </LinearLayout>
+    </ScrollView>
 </RelativeLayout>
