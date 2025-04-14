@@ -73,7 +73,7 @@
 
             <!-- imageCoinIcon: clickable coin icon to open the shop -->
             <ImageView
-                    android:id="@+id/imageCoinIcon"
+                android:id="@+id/imageCoinIcon"
                 android:layout_width="34dp"
                 android:layout_height="34dp"
                 android:src="@drawable/coin"
@@ -94,28 +94,6 @@
         android:layout_marginEnd="16dp"
         app:layout_constraintTop_toBottomOf="@+id/topBarLayout"
         app:layout_constraintEnd_toEndOf="parent">
-
-        <!-- Notification Icon -->
-        <FrameLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp">
-            <ImageView
-                android:id="@+id/imageNotificationCircle"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:scaleType="fitCenter"
-                android:src="@drawable/circleblue" />
-            <ImageView
-                android:id="@+id/imageNotification"
-                android:layout_width="34dp"
-                android:layout_height="34dp"
-                android:layout_gravity="center"
-                android:layout_marginBottom="6sp"
-                android:layout_marginLeft="-3sp"
-                android:src="@drawable/chatbot" />
-        </FrameLayout>
-
         <!-- Settings Icon -->
         <FrameLayout
             android:id="@+id/settingsLayout"
@@ -156,6 +134,20 @@
                 android:src="@drawable/store" />
         </FrameLayout>
     </LinearLayout>
+    <ImageView
+        android:id="@+id/imageNotification"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginStart="340dp"
+        android:layout_marginBottom="20dp"
+        android:src="@drawable/chatbot"
+        android:background="@drawable/circleblue"
+        android:scaleType="centerInside"
+        android:elevation="8dp"
+        android:clickable="true"
+        android:focusable="true"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
 
     <!-- HEADER CONTAINER (Avatar & Greeting) -->
     <FrameLayout
@@ -216,7 +208,7 @@
                 android:id="@+id/roundedTopContainer"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/bgbluee3"
+                android:background="@drawable/curved_white_background"
                 android:clipToOutline="true"
                 android:orientation="vertical">
 
@@ -236,7 +228,7 @@
                         android:layout_marginStart="15sp"
                         android:fontFamily="@font/poppins_semibold"
                         android:text="@string/badges"
-                        android:textColor="@android:color/white"
+                        android:textColor="@android:color/black"
                         android:textSize="20sp"
                         android:textStyle="bold" />
 
@@ -255,7 +247,7 @@
                         android:focusable="true"
                         android:fontFamily="@font/poppins_italic"
                         android:text="@string/seeAll"
-                        android:textColor="@android:color/white"
+                        android:textColor="@android:color/black"
                         android:textSize="14sp" />
                 </LinearLayout>
 
@@ -321,7 +313,7 @@
                         android:layout_marginStart="15sp"
                         android:fontFamily="@font/poppins_semibold"
                         android:text="@string/certs"
-                        android:textColor="@android:color/white"
+                        android:textColor="@android:color/black"
                         android:textSize="20sp"
                         android:textStyle="bold" />
 
@@ -340,7 +332,7 @@
                         android:focusable="true"
                         android:fontFamily="@font/poppins_italic"
                         android:text="@string/seeAll"
-                        android:textColor="@android:color/white"
+                        android:textColor="@android:color/black"
                         android:textSize="14sp" />
                 </LinearLayout>
 
@@ -527,14 +519,14 @@
                         android:layout_height="wrap_content"
                         android:text="Weekly"
                         android:checked="true"
-                        android:textColor="@android:color/white"/>
+                        android:textColor="@android:color/black"/>
 
                     <RadioButton
                         android:id="@+id/radioMonthly"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Monthly"
-                        android:textColor="@android:color/white"/>
+                        android:textColor="@android:color/black"/>
                 </RadioGroup>
 
                 <!-- BarChart for tracking data -->
@@ -549,7 +541,7 @@
                     android:layout_width="350sp"
                     android:layout_height="1dp"
                     android:layout_gravity="center"
-                    android:background="@android:color/darker_gray"
+                    android:background="@android:color/black"
                     android:layout_marginTop="56dp"
                     android:layout_marginBottom="16dp" />
 
@@ -583,7 +575,7 @@
                         android:layout_marginTop="35dp"
                         android:fontFamily="@font/poppins_semibold_italic"
                         android:text="@string/step"
-                        android:textColor="@color/WBlue"
+                        android:textColor="@color/black"
                         android:textSize="28sp"
                         android:textStyle="bold" />
 
@@ -602,7 +594,7 @@
                         android:layout_marginTop="520dp"
                         android:fontFamily="@font/poppinsregular"
                         android:text="@string/pipti"
-                        android:textColor="@color/WBlue"
+                        android:textColor="@color/black"
                         android:textSize="16sp"
                         android:textStyle="bold" />
 
@@ -693,7 +685,7 @@
                         android:layout_marginBottom="-10sp"
                         android:fontFamily="@font/poppinsmedium"
                         android:text="@string/Ftower"
-                        android:textColor="@android:color/white"
+                        android:textColor="@android:color/black"
                         android:textSize="20sp"
                         android:textStyle="bold" />
 
@@ -703,7 +695,7 @@
                     android:layout_width="350sp"
                     android:layout_height="1dp"
                     android:layout_gravity="center"
-                    android:background="@android:color/darker_gray"
+                    android:background="@android:color/black"
                     android:layout_marginTop="56dp"
                     android:layout_marginBottom="56dp" />
 
@@ -734,14 +726,14 @@
                         android:textStyle="bold"
                         android:layout_gravity="center_horizontal"
                         android:layout_marginTop="8dp"
-                        android:textColor="@color/WBlue"
+                        android:textColor="@color/black"
                         tools:ignore="HardcodedText" />
 
                     <View
                         android:layout_width="350sp"
                         android:layout_height="1dp"
                         android:layout_gravity="center"
-                        android:background="@android:color/darker_gray"
+                        android:background="@android:color/black"
                         android:layout_marginTop="26dp"
                         android:layout_marginBottom="26dp" />
 
@@ -767,7 +759,7 @@
                         android:layout_marginTop="8dp"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
-                        android:textColor="@color/WBlue"/>
+                        android:textColor="@color/black"/>
                 </LinearLayout>
 
 

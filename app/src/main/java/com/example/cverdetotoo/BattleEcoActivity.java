@@ -25,12 +25,16 @@ import android.widget.Toast;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.gms.tasks.Task;
+import com.google.android.gms.tasks.Tasks;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.SetOptions;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
@@ -76,6 +80,8 @@ public class BattleEcoActivity extends AppCompatActivity {
 
     // Track if game is over
     private boolean gameIsOver = false;
+    // Track if the player won (cleared all bosses)
+    private boolean gameWon = false;
 
     // Additional state: Whose turn it is
     private boolean isPlayerTurn = false;
@@ -258,8 +264,8 @@ public class BattleEcoActivity extends AppCompatActivity {
                 "Fossil Fury (25 damage)", R.drawable.card8, 1));
         aiDeck.add(new BattleCard(CardType.SLASH, 45,
                 "Pollution Pulse (45 damage, 30 shield reduction)", R.drawable.card9, 2));
-        aiDeck.add(new BattleCard(CardType.DAMAGE, 35,
-                "Emissions Eruption (35 damage)", R.drawable.card10, 1));
+        aiDeck.add(new BattleCard(CardType.DAMAGE, 60,
+                "Emissions Eruption (60 damage)", R.drawable.card10, 1));
         aiDeck.add(new BattleCard(CardType.SHIELD, 0,
                 "Pollution Moon (+25 shield)", R.drawable.card11, 0));
 
@@ -294,7 +300,6 @@ public class BattleEcoActivity extends AppCompatActivity {
                 int minutes = secondsRemaining / 60;
                 int seconds = secondsRemaining % 60;
                 timerText.setText(String.format("⏰ %02d:%02d", minutes, seconds));
-
                 int minuteIndex = (int) ((TOTAL_GAME_TIME - timeRemaining) / 60000);
                 if (minuteIndex > nextEcoTipIndex && nextEcoTipIndex < ecoTipTexts.length) {
                     showEcoTipDialogueUnskippable(ecoTipTexts[nextEcoTipIndex],
@@ -355,7 +360,7 @@ public class BattleEcoActivity extends AppCompatActivity {
     }
 
     // -------------------------------
-    // Updated Dialogue Methods with Callbacks
+    // Dialogue Methods with Callbacks
     // -------------------------------
 
     private void showNpcDialogue(String message, Runnable afterDismiss) {
@@ -388,7 +393,7 @@ public class BattleEcoActivity extends AppCompatActivity {
         npcDialog.show();
     }
 
-    // Updated showBossIntroDialogue with callback.
+    // Boss intro dialogue with callback.
     private void showBossIntroDialogue(int bossIndex, Runnable afterDismiss) {
         String dialogue = "";
         if(bossIndex > 0) {
@@ -411,7 +416,7 @@ public class BattleEcoActivity extends AppCompatActivity {
     }
 
     // -------------------------------
-    // Updated rollForFirstTurn to Delay Start Until After Dialogue
+    // Dice Roll for First Turn
     // -------------------------------
     private void rollForFirstTurn() {
         final Handler rollHandler = new Handler();
@@ -772,7 +777,7 @@ public class BattleEcoActivity extends AppCompatActivity {
             }
         }
         else if(cardName.contains("pollution pulse")){
-            if (!isPlayerTurn) {  // Ensure it's AI's turn.
+            if (!isPlayerTurn) {  // AI-only card.
                 int damage = 45;
                 int shieldGain = 30;
                 int[] result = applyDamage(false, damage, false);
@@ -866,9 +871,9 @@ public class BattleEcoActivity extends AppCompatActivity {
     }
 
     private void proceedToNextBossOrWin() {
-        // If the computer (boss) is defeated:
+        // If the boss is defeated:
         if (computerHealth <= 0) {
-            // Update partial results (points/coins) in games/username
+            // Update partial results in Gamez/{username} (coins & points)
             if (currentBossIndex == 0) {
                 storePartialBattleEcoUpdate(0, 30);
             } else if (currentBossIndex == 1) {
@@ -877,23 +882,22 @@ public class BattleEcoActivity extends AppCompatActivity {
                 storePartialBattleEcoUpdate(0, 50);
             }
 
-            // Move on to the next boss
+            // Move to next boss.
             currentBossIndex++;
 
-            // If there are more bosses, reset the AI's health, show next boss, etc.
             if (currentBossIndex < BOSS_HEALTHS.length) {
                 computerHealth = BOSS_HEALTHS[currentBossIndex];
                 aiCharacterImage.setImageResource(BOSS_IMAGES[currentBossIndex]);
                 updateUI();
                 handler.postDelayed(() -> showBossIntroDialogue(currentBossIndex, this::startPlayerTurn), 500);
             } else {
-                // Player has cleared all bosses!
+                // All bosses defeated! Award final coins/points.
                 awardTimeBasedPoints();
             }
         }
     }
 
-    // Updated awardTimeBasedPoints to pass finalPoints to final update.
+    // Award final coins/points upon game clear.
     private void awardTimeBasedPoints() {
         long totalTimeMillis = System.currentTimeMillis() - gameStartTime;
         long totalSeconds = totalTimeMillis / 1000;
@@ -913,9 +917,11 @@ public class BattleEcoActivity extends AppCompatActivity {
 
         int totalMinutes = (int) (totalSeconds / 60);
 
-        // Log final result into gamez/username/records/BattleEco
+        // Update final results into Gamez/{username}/records/BattleEco.
         storeFinalBattleEcoResult(100, finalPoints, true, totalMinutes);
 
+        // Mark game as won.
+        gameWon = true;
         gameOver();
     }
 
@@ -928,13 +934,22 @@ public class BattleEcoActivity extends AppCompatActivity {
         new Handler().postDelayed(this::showGameOverPanel, 1000);
     }
 
+    // Show outcome dialog based on win or lose.
     private void showGameOverPanel() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Game Over")
-                .setMessage("Would you like to try again or exit?")
-                .setCancelable(false)
-                .setPositiveButton("Try Again", (dialog, which) -> restartGame())
-                .setNegativeButton("Exit", (dialog, which) -> exitGame());
+        if (gameWon) {
+            builder.setTitle("Congratulations, you won 100 coins!")
+                    .setMessage("Would you like to try again?")
+                    .setCancelable(false)
+                    .setPositiveButton("Yes", (dialog, which) -> restartGame())
+                    .setNegativeButton("No", (dialog, which) -> exitGame());
+        } else {
+            builder.setTitle("You lose")
+                    .setMessage("Want to try again?")
+                    .setCancelable(false)
+                    .setPositiveButton("Yes", (dialog, which) -> restartGame())
+                    .setNegativeButton("No", (dialog, which) -> exitGame());
+        }
         builder.show();
     }
 
@@ -949,7 +964,7 @@ public class BattleEcoActivity extends AppCompatActivity {
         }
         handler.removeCallbacksAndMessages(null);
         energyHandler.removeCallbacks(energyRunnable);
-        Intent intent = new Intent(BattleEcoActivity.this, MainActivity.class);
+        Intent intent = new Intent(BattleEcoActivity.this, ProfileFragment.class);
         intent.putExtra("fragment", "GameFragment");
         startActivity(intent);
         finish();
@@ -1056,7 +1071,7 @@ public class BattleEcoActivity extends AppCompatActivity {
     // Firestore Update Methods
     // -------------------------------
 
-    // Partial update: after defeating each boss, update/create points (and coins) at games/{username}
+    // Partial update: after defeating each boss, update/create coins and points in Gamez/{username}
     private void storePartialBattleEcoUpdate(int coinsIncrement, int pointsIncrement) {
         FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
         if (currentUser == null) {
@@ -1069,7 +1084,7 @@ public class BattleEcoActivity extends AppCompatActivity {
             return;
         }
         FirebaseFirestore db = FirebaseFirestore.getInstance();
-        // Path: games/{username}
+        // Use a consistent collection name: "Gamez"
         DocumentReference docRef = db.collection("Games")
                 .document(username);
         Map<String, Object> data = new HashMap<>();
@@ -1084,7 +1099,7 @@ public class BattleEcoActivity extends AppCompatActivity {
                 });
     }
 
-    // Final update: when game is cleared, update/create final results at gamez/{username}/records/BattleEco
+    // Final update: when game is cleared, update/create final results in Gamez/{username}/records/BattleEco
     private void storeFinalBattleEcoResult(int coinIncrement, int finalPoints, boolean isWin, int timeClearedMinutes) {
         FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
         if (currentUser == null) {
@@ -1097,7 +1112,7 @@ public class BattleEcoActivity extends AppCompatActivity {
             return;
         }
         FirebaseFirestore db = FirebaseFirestore.getInstance();
-        // Path: gamez/{username}/records/BattleEco
+        // Path: Gamez/{username}/records/BattleEco
         DocumentReference docRef = db.collection("Gamez")
                 .document(username)
                 .collection("records")
@@ -1134,6 +1149,7 @@ public class BattleEcoActivity extends AppCompatActivity {
         }
         energyHandler.removeCallbacks(energyRunnable);
     }
+
     private void resumeGame() {
         pausePanel.setVisibility(View.GONE);
         if (backgroundMusic != null && !backgroundMusic.isPlaying() && !isMuted) {
@@ -1142,6 +1158,7 @@ public class BattleEcoActivity extends AppCompatActivity {
         startGameTimer();
         energyHandler.postDelayed(energyRunnable, 30000);
     }
+
     private void saveGameState() {
         SharedPreferences prefs = getSharedPreferences("BattleEcoPrefs", MODE_PRIVATE);
         SharedPreferences.Editor editor = prefs.edit();
@@ -1166,6 +1183,7 @@ public class BattleEcoActivity extends AppCompatActivity {
         editor.putInt("lastAICardResId", lastAICardResId);
         editor.apply();
     }
+
     private void loadGameState() {
         SharedPreferences prefs = getSharedPreferences("BattleEcoPrefs", MODE_PRIVATE);
         if (prefs.contains("playerHealth")) {

@@ -21,6 +21,8 @@
             android:layout_height="wrap_content">
 
             <!-- The first banner image -->
+
+            <!-- The second image overlay (banner2) -->
             <ImageView
                 android:id="@+id/imageBanner"
                 android:layout_width="wrap_content"
@@ -29,15 +31,6 @@
                 android:scaleType="fitXY"
                 android:src="@drawable/banner" />
 
-            <!-- The second image overlay (banner2) -->
-            <ImageView
-                android:id="@+id/imageBanner2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:adjustViewBounds="true"
-                android:scaleType="fitXY"
-                android:src="@drawable/banner2" />
 
         </FrameLayout>
 
@@ -56,38 +49,27 @@
     <LinearLayout
         android:id="@+id/layoutContent"
         android:layout_width="382dp"
-        android:layout_height="wrap_content"
+        android:layout_height="425dp"
+        android:layout_marginTop="150dp"
         android:gravity="center_horizontal"
         android:orientation="vertical"
         android:padding="16dp">
 
-        <!-- Circular badge area -->
-        <FrameLayout
-            android:layout_width="120dp"
-            android:layout_height="120dp"
-            android:layout_marginTop="34dp"
-            android:layout_marginBottom="8dp"
-            android:background="@drawable/circle_gray"
-            android:gravity="center">
 
-            <!-- If you have an ImageView badge, place it here.
-                 Otherwise, a TextView for placeholder text: -->
-            <TextView
-                android:id="@+id/textBadgeLabel"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@android:color/black"
-                android:textSize="16sp" />
-        </FrameLayout>
+        <TextView
+            android:id="@+id/textBadgeLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/black"
+            android:textSize="16sp" />
 
         <!-- "Well done!" text -->
         <TextView
             android:id="@+id/textTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15sp"
             android:layout_marginBottom="8dp"
-            android:text="@string/welldone"
+            android:text="Well done!"
             android:textColor="@android:color/white"
             android:textSize="20sp"
             android:textStyle="bold" />
@@ -95,29 +77,24 @@
         <!-- Sub-message -->
         <TextView
             android:id="@+id/textSubMessage"
-            android:layout_width="wrap_content"
+            android:layout_width="341dp"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:layout_marginHorizontal="24dp"
-            android:layout_marginTop="20sp"
             android:layout_marginBottom="16dp"
-            style="@style/blurr"
-            android:gravity="center"
-            android:fontFamily="@font/poppinsregular"
-            android:text="@string/badgetxt"
+            android:gravity="start"
+            android:text="\u2022 You’ve completed 1500 steps.\n\u2022 You’ve reduced your carbon footprint with that walk.\n\u2022 You’ve earned 100 points and 100 coins!\n\nKeep making sustainable choices!"
+            android:textAlignment="viewStart"
             android:textColor="@android:color/white"
             android:textSize="14sp" />
-
         <!-- Continue button -->
         <Button
             android:id="@+id/buttonContinue"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="50sp"
             android:layout_marginBottom="24dp"
-            style="@style/badgebtn1"
-            android:fontFamily="@font/poppins_semibold"
-            android:text="@string/cont"
-            android:textColor="@color/BlckRed" />
+            android:text="CONTINUE"
+            android:textColor="@android:color/black" />
 
     </LinearLayout>
 
